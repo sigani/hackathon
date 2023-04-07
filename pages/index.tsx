@@ -29,9 +29,7 @@ import Jobs from "./components/Jobs";
 //   }
 // }
 
-export default function Home({
-  isConnected,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home() {
   return (
     <Stack
       direction="column"
