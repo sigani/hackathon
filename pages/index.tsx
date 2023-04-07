@@ -2,9 +2,10 @@ import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import { InferGetServerSidePropsType } from "next";
 import { Container, Grid, Stack } from "@mui/material";
-import TopBar from "./components/TopBar";
 import SearchJobs from "./components/SearchJobs";
 import Jobs from "./components/Jobs";
+import TopBar from "./components/TopBar";
+import GlobalStore from "../store/GlobalStore";
 
 // export async function getServerSideProps(context: any) {
 //   try {
@@ -31,15 +32,17 @@ import Jobs from "./components/Jobs";
 
 export default function Home() {
   return (
-    <Stack
-      direction="column"
-      justifyContent="center"
-      alignItems="center"
-      spacing={10}
-    >
-      <TopBar />
-      <SearchJobs />
-      <Jobs />
-    </Stack>
+    <GlobalStore>
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={10}
+      >
+        <TopBar />
+        <SearchJobs />
+        <Jobs />
+      </Stack>
+    </GlobalStore>
   );
 }
