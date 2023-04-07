@@ -1,10 +1,12 @@
-import Head from 'next/head'
-import clientPromise from '../lib/mongodb'
-import { InferGetServerSidePropsType } from 'next'
+import Head from "next/head";
+import clientPromise from "../lib/mongodb";
+import { InferGetServerSidePropsType } from "next";
+import Topbar from "./components/Topbar";
+import MainPage from "./components/MainPage";
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   try {
-    await clientPromise
+    await clientPromise;
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
@@ -16,12 +18,12 @@ export async function getServerSideProps(context) {
 
     return {
       props: { isConnected: true },
-    }
+    };
   } catch (e) {
-    console.error(e)
+    console.error(e);
     return {
       props: { isConnected: false },
-    }
+    };
   }
 }
 
@@ -31,70 +33,31 @@ export default function Home({
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Helping Heroes</title>
+        <link rel="icon" href="/superhero-icon-original.svg" />
       </Head>
-
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
-        </h1>
-
-        {isConnected ? (
-          <h2 className="subtitle">You are connected to MongoDB</h2>
-        ) : (
-          <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
-            for instructions.
-          </h2>
-        )}
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <Topbar />
+        <MainPage />
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
+        <div>
+          <a href="" target="_blank" rel="noopener noreferrer">
+            Contact Us{" "}
+          </a>
+        </div>
+        <div>
+          <a href="" target="_blank" rel="noopener noreferrer">
+            Become a Hero{" "}
+            <img
+              width="40px"
+              src="./superhero-icon-original.svg"
+              alt="HH Logo"
+              className="logo"
+            />
+          </a>
+        </div>
       </footer>
 
       <style jsx>{`
@@ -108,12 +71,12 @@ export default function Home({
         }
 
         main {
-          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          width: 100%;
         }
 
         footer {
@@ -172,7 +135,7 @@ export default function Home({
         }
 
         code {
-          background: #fafafa;
+          background: #bab1a0;
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
@@ -197,7 +160,7 @@ export default function Home({
           text-align: left;
           color: inherit;
           text-decoration: none;
-          border: 1px solid #eaeaea;
+          border: 1px solid #bab1a0;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
         }
@@ -245,7 +208,11 @@ export default function Home({
         * {
           box-sizing: border-box;
         }
+        .textdiv {
+          padding: 20px;
+          margin: 20px;
+        }
       `}</style>
     </div>
-  )
+  );
 }
