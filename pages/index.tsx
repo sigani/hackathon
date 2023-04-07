@@ -4,7 +4,7 @@ import { InferGetServerSidePropsType } from "next";
 import { Container, Grid, Stack } from "@mui/material";
 import SearchJobs from "./components/SearchJobs";
 import Jobs from "./components/Jobs";
-import TopBar from "./components/Topbar";
+import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
 
 // export async function getServerSideProps(context: any) {
