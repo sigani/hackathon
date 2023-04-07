@@ -35,17 +35,15 @@ export default function Home({
   isConnected,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={10}
-      >
-        <TopBar />
-        <SearchJobs />
-        <Jobs />
-      </Stack>
-    </LocalizationProvider>
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={10}
+    >
+      <TopBar />
+      <SearchJobs />
+      <Jobs />
+    </Stack>
   );
 }
