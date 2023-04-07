@@ -1,8 +1,6 @@
-import Head from "next/head";
-import clientPromise from "../lib/mongodb";
-import { InferGetServerSidePropsType } from "next";
-import Topbar from "./components/Topbar";
-import MainPage from "./components/MainPage";
+import Head from 'next/head'
+import clientPromise from '../lib/mongodb'
+import { InferGetServerSidePropsType } from 'next'
 
 export async function getServerSideProps(context: any) {
   try {
@@ -71,6 +69,7 @@ export default function Home({
         }
 
         main {
+          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
