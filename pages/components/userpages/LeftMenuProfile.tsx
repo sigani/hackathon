@@ -5,6 +5,7 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import ExtensionIcon from "@mui/icons-material/Extension";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
+import AspectRatio from "@mui/joy/AspectRatio";
 
 let name = "Coder#134";
 let badges = [
@@ -44,14 +45,22 @@ function LeftMenuProfile() {
           width={"100%"}
           height={"45%"}
         >
-          <Avatar
-            src={"../superhero-icon-original.svg"}
+          <AspectRatio
+            ratio="1/1"
             sx={{
-              minWidth: "100%",
-              height: "100%",
-              backgroundColor: "orange",
+              width: "100%",
+              borderRadius: "1000px",
             }}
-          />
+          >
+            <Avatar
+              src={"../superhero-icon-original.svg"}
+              sx={{
+                height: "100%",
+                width: "100%",
+                backgroundColor: "orange",
+              }}
+            />
+          </AspectRatio>
         </Grid>
         <Grid paddingLeft="20%" paddingRight="20%">
           <Box
@@ -87,7 +96,7 @@ function LeftMenuProfile() {
               {badges.map((badge) => {
                 const Icon = badge;
                 return (
-                  <Grid xs={3}>
+                  <Grid xs={12} md={3}>
                     <Icon
                       sx={{
                         color: "white",
@@ -135,13 +144,13 @@ function LeftMenuProfile() {
               alignItems="center"
               paddingBottom={"15%"}
             >
-              <Grid padding={"5px"} xs={4}>
+              <Grid padding={"5px"} xs={12} md={4}>
                 <GitHubIcon color={"warning"}></GitHubIcon>
               </Grid>
-              <Grid padding={"5px"} paddingTop={"8px"} xs={4}>
+              <Grid padding={"5px"} paddingTop={"8px"} xs={12} md={4}>
                 <img height={"18px"} src="/discord.svg" />
               </Grid>
-              <Grid padding={"5px"} xs={4}>
+              <Grid padding={"5px"} xs={12} md={4}>
                 <LinkedInIcon color={"warning"}></LinkedInIcon>
               </Grid>
             </Grid>
