@@ -44,7 +44,7 @@ function ProjectSummary() {
     <>
       <TopBar></TopBar>
       <ContributorsFilter></ContributorsFilter>
-      <Grid container direction={"row"}>
+      <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
         {users.map(() => {
           return (
             <Grid

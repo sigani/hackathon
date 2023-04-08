@@ -46,7 +46,7 @@ function ProjectSummary() {
     <>
       <TopBar></TopBar>
       <FilterPopup></FilterPopup>
-      <Grid container direction={"row"}>
+      <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
         {projects.map(() => {
           return (
             <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
