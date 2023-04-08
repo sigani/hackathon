@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CssBaseline, Link } from "@mui/material";
 
-const pages = ["Popular Projects", "Top Contributors", "SEARCH"];
+const pages = ["Popular Projects", "Contributors", "SEARCH"];
 const settings = ["Profile", "Account", "Settings", "Logout"];
 const linksPages = [
   "/components/popular/PopularProjects",

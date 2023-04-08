@@ -124,7 +124,7 @@ export default function ContributorsFilter() {
                     }
                   />
                   <FormControlLabel
-                    label="Looking to start only"
+                    label="Looking to start team only"
                     value={"start"}
                     control={
                       <Radio
