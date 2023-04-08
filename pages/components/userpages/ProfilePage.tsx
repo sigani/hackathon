@@ -7,7 +7,7 @@ import MiddleContent from "./MiddleContent";
 function ProfilePage() {
   return (
     <>
-      <TopBar />
+      <TopBar></TopBar>
       <Box
         sx={{
           height: "calc(100vh)",
