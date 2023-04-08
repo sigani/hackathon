@@ -20,7 +20,6 @@ import {
   TextField,
 } from "@mui/material";
 import { ProjectType } from "../../../interfaces/ProjectType";
-import { Languages } from "../../../interfaces/Languages";
 
 function ProjectSummary({ handleOpen }: any) {
   return (
@@ -38,7 +37,7 @@ function ProjectSummary({ handleOpen }: any) {
   );
 }
 
-export default function FilterPopup() {
+export default function ContributorsFilter() {
   const [type, setType] = useState("Any");
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
@@ -99,27 +98,6 @@ export default function FilterPopup() {
                     sx={{ minWidth: "300px" }}
                   >
                     {Object.entries(ProjectType).map(([code, name]) => (
-                      <MenuItem value={name}>{name}</MenuItem>
-                    ))}
-                  </Select>
-                </Grid>
-              </Grid>
-              <Grid container paddingBottom={"20px"} direction={"row"}>
-                <Grid item>
-                  <InputLabel id="demo-simple-select-label">
-                    Language
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={type}
-                    defaultValue="Any"
-                    onChange={handleChange}
-                    color={"success"}
-                    sx={{ minWidth: "300px" }}
-                  >
-                    <MenuItem value={"Any"}>Any</MenuItem>
-                    {Object.entries(Languages).map(([code, name]) => (
                       <MenuItem value={name}>{name}</MenuItem>
                     ))}
                   </Select>
