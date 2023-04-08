@@ -10,12 +10,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { CssBaseline } from "@mui/material";
-import Link from "next/link";
+import { CssBaseline, Link } from "@mui/material";
 
-const pages = ["Opportunities", "Superheroes", "News"];
+const pages = ["Popular Projects", "Top Contributors", "SEARCH"];
 const settings = ["Profile", "Account", "Settings", "Logout"];
+const linksPages = ["/", "/", "/"];
+const linksSettings = ["/components/userpages/ProfilePage", "/", "/", "/"];
 
 function TopBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -45,17 +45,11 @@ function TopBar() {
       <CssBaseline />
       <AppBar
         position="sticky"
-        sx={{ height: "55", backgroundColor: "rgb(101,76,76)" }}
+        sx={{ height: "55px", backgroundColor: "rgb(47,47,47)" }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" fixed>
           <Toolbar disableGutters sx={{ height: "55px" }}>
-            <div className={"textdiv"}>
-              <img
-                width="40px"
-                // rel="icon"
-                src="../superhero-icon-original.svg"
-              />
-            </div>
+            <div className={"textdiv"}></div>
             <Typography
               variant="h6"
               noWrap
@@ -71,7 +65,7 @@ function TopBar() {
                 textDecoration: "none",
               }}
             >
-              HelpingHeroes
+              {"</>"} CodeCoop
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -85,62 +79,20 @@ function TopBar() {
               >
                 {/*<MenuIcon />*/}
               </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              LOGO
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
+              {pages.map((page, index) => (
+                <Link href={linksPages[index]}>
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page}
+                  </Button>
+                </Link>
               ))}
             </Box>
-
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -163,9 +115,9 @@ function TopBar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
+                {settings.map((setting, index) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link href="/components/userpages/ProfilePage">
+                    <Link href={linksSettings[index]}>
                       <Typography textAlign="center">{setting}</Typography>
                     </Link>
                   </MenuItem>

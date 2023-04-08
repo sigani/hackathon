@@ -1,6 +1,8 @@
-import { Avatar, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import TopBar from "../TopBar";
+import LeftMenuProfile from "./LeftMenuProfile";
+import MiddleContent from "./MiddleContent";
 
 function ProfilePage() {
   return (
@@ -14,51 +16,21 @@ function ProfilePage() {
         }}
       >
         <Grid container direction="row" alignItems="center" spacing={2}>
+          <LeftMenuProfile />
           <Grid
             item
-            xs={3}
+            xs={9}
             sx={{
-              backgroundColor: "rgba(255,255,255,0.78)",
-              height: "calc(100vh - 74px)",
+              backgroundColor: "rgba(82,78,78,0.69)",
+              height: "calc(100vh-55px)",
+              overflowY: "scroll",
             }}
-          >
-            <Grid
-              height={"100%"}
-              padding={"10%"}
-              alignItems="center"
-              direction="column"
-              justifyContent="center"
-            >
-              <Avatar
-                src={"../superhero-icon-original.svg"}
-                sx={{
-                  width: "200px",
-                  height: "200px",
-                  backgroundColor: "orange",
-                }}
-              />
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            xs={6}
-            sx={{
-              backgroundColor: "rgba(232,229,224,0.35)",
-              height: "calc(100vh - 74px)",
-            }}
-            height={"100%"}
           >
             {" "}
-            <Box height={"100%"}></Box>
+            <Box height={"calc(100vh-55px)"}>
+              <MiddleContent />
+            </Box>
           </Grid>
-          <Grid
-            item
-            xs={3}
-            sx={{
-              backgroundColor: "rgba(255,255,255,0.78)",
-              height: "calc(100vh - 74px)",
-            }}
-          ></Grid>
         </Grid>
       </Box>
     </>
