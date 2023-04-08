@@ -6,7 +6,6 @@ import SearchJobs from "./components/SearchJobs";
 import Jobs from "./components/Jobs";
 import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
-import "./styles/globals.css";
 
 // export async function getServerSideProps(context: any) {
 //   try {
