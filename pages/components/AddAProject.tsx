@@ -1,5 +1,7 @@
 import {
+  Box,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
@@ -8,14 +10,17 @@ import {
   Grid,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Select,
   SelectChangeEvent,
   Stack,
   TextField,
+  useTheme,
 } from "@mui/material";
 import { useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Project } from "../../interfaces/Project";
 
 const types = [
   "Artificial Intelligence",
@@ -31,10 +36,37 @@ const types = [
   "Other",
 ];
 
+const languages = [
+  "C/C++",
+  "Java",
+  "JavaScript/TypeScript",
+  "C#",
+  "Matlab/Julia",
+  "Python",
+];
+
+const nullDate = new Date(0);
+
 export default function AddAProject(props: any) {
   const [type, setType] = useState("");
+  const [language, setLang] = useState<string[]>([]);
+  const [name, setName] = useState("");
+  const [startDate, setStartDate] = useState(nullDate);
+  const [endDate, setEndDate] = useState(nullDate);
+  const [desc, setDesc] = useState("");
+
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
+  };
+
+  const handleChangeLang = (event: SelectChangeEvent<string[]>) => {
+    const {
+      target: { value },
+    } = event;
+    setLang(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
   };
 
   return (
@@ -57,7 +89,7 @@ export default function AddAProject(props: any) {
               <Grid item xs={12}>
                 <TextField
                   id="standard-helperText-required"
-                  label="Title"
+                  label="Title*"
                   defaultValue=""
                   helperText="What will your project be called"
                   variant="standard"
@@ -65,8 +97,8 @@ export default function AddAProject(props: any) {
                 />
               </Grid>
 
-              <Grid item xs={12}>
-                <InputLabel id="demo-simple-select-label">Type</InputLabel>
+              <Grid item xs={6}>
+                <InputLabel id="demo-simple-select-label">Type*</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -83,6 +115,13 @@ export default function AddAProject(props: any) {
 
               <Grid item xs={6}>
                 <InputLabel id="demo-simple-select-label">
+                  Upload an Image
+                </InputLabel>
+                <input type="file" />
+              </Grid>
+
+              <Grid item xs={6}>
+                <InputLabel id="demo-simple-select-label">
                   Start Date
                 </InputLabel>
                 <DatePicker />
@@ -91,6 +130,34 @@ export default function AddAProject(props: any) {
               <Grid item xs={6}>
                 <InputLabel id="demo-simple-select-label">End Date</InputLabel>
                 <DatePicker />
+              </Grid>
+
+              <Grid item xs={6}>
+                <InputLabel id="demo-multiple-chip-label">Languages</InputLabel>
+                <Select
+                  fullWidth
+                  labelId="demo-multiple-chip-label"
+                  id="demo-multiple-chip"
+                  multiple
+                  value={language}
+                  onChange={handleChangeLang}
+                  input={
+                    <OutlinedInput id="select-multiple-chip" label="Chip" />
+                  }
+                  renderValue={(selected: string[]) => (
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                      {selected.map((value: any) => (
+                        <Chip key={value} label={value} />
+                      ))}
+                    </Box>
+                  )}
+                >
+                  {languages.map((name) => (
+                    <MenuItem key={name} value={name}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
               </Grid>
 
               <Grid item xs={6}>
@@ -114,7 +181,6 @@ export default function AddAProject(props: any) {
               variant="contained"
               // color="success"
               sx={{ backgroundColor: "#FA9E64" }}
-              onClick={props.handleClose}
             >
               Submit
             </Button>
