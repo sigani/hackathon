@@ -6,6 +6,7 @@ import SearchJobs from "./components/SearchJobs";
 import Jobs from "./components/Jobs";
 import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
+import APIManager from "../utils/APIManager";
 
 // export async function getServerSideProps(context: any) {
 //   try {
@@ -31,26 +32,25 @@ import GlobalStore from "../store/GlobalStore";
 // }
 
 export default function Home() {
+  APIManager.getInstance().then((instance) => {
+    instance.getProjects().then((res) => {
+      console.log(res);
+    });
+  });
+
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <title>CodingCoop</title>
-        <link rel="icon" href="/superhero-icon-original.svg" />
-      </Head>
-      <GlobalStore>
-        <Stack
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={10}
-        >
-          <TopBar />
-          <SearchJobs />
-          <Jobs />
-        </Stack>
-      </GlobalStore>{" "}
-    </div>
+    <GlobalStore>
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={5}
+        paddingBottom={"500px"}
+      >
+        <TopBar />
+        <SearchJobs />
+        <Jobs />
+      </Stack>
+    </GlobalStore>
   );
 }
