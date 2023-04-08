@@ -9,14 +9,23 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import {
   Box,
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  FormControlLabel,
   Grid,
   IconButton,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+  SelectChangeEvent,
 } from "@mui/material";
+import { ProjectType } from "../../../interfaces/ProjectType";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -41,6 +50,7 @@ function ProjectSummary({ handleOpen }: any) {
 }
 
 export default function FilterPopup() {
+  const [type, setType] = useState("Any");
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
 
@@ -51,6 +61,10 @@ export default function FilterPopup() {
   function handleOpen() {
     setOpen(true);
   }
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setType(event.target.value as string);
+  };
 
   return (
     <>
@@ -67,27 +81,120 @@ export default function FilterPopup() {
         fullWidth={true}
         maxWidth={"md"}
       >
-        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-        <Card
-          sx={{ maxWidth: 345, padding: "20px", boxShadow: "none" }}
-          onClick={handleOpen}
-        >
-          <CardMedia sx={{ height: 140 }} image={projectIm} />
-        </Card>
+        <DialogTitle id="alert-dialog-title">Filters</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {description} {description} {description}
+            <Grid container direction={"column"}>
+              <Grid paddingBottom={"20px"}>
+                <FormControlLabel
+                  label="Not yet started"
+                  control={
+                    <Checkbox
+                      defaultChecked
+                      sx={{
+                        color: "orange",
+                        "&.Mui-checked": {
+                          color: "orange",
+                        },
+                      }}
+                    />
+                  }
+                />
+                <FormControlLabel
+                  label="Started projects"
+                  control={
+                    <Checkbox
+                      defaultChecked
+                      sx={{
+                        color: "orange",
+                        "&.Mui-checked": {
+                          color: "orange",
+                        },
+                      }}
+                    />
+                  }
+                />
+                <FormControlLabel
+                  label="Completed projects"
+                  control={
+                    <Checkbox
+                      defaultChecked
+                      sx={{
+                        color: "orange",
+                        "&.Mui-checked": {
+                          color: "orange",
+                        },
+                      }}
+                    />
+                  }
+                />
+              </Grid>
+              <Grid paddingBottom={"20px"}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="all"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel
+                    label="All projects"
+                    value={"all"}
+                    control={
+                      <Radio
+                        sx={{
+                          color: "orange",
+                          "&.Mui-checked": {
+                            color: "orange",
+                          },
+                        }}
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="Looking for team only"
+                    value={"team"}
+                    control={
+                      <Radio
+                        sx={{
+                          color: "orange",
+                          "&.Mui-checked": {
+                            color: "orange",
+                          },
+                        }}
+                      />
+                    }
+                  />
+                </RadioGroup>
+              </Grid>
+              <Grid paddingBottom={"20px"}>
+                {" "}
+                <InputLabel id="demo-simple-select-label">
+                  Type of Project
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={type}
+                  defaultValue="Any"
+                  onChange={handleChange}
+                  color={"success"}
+                  sx={{ minWidth: "300px" }}
+                >
+                  {Object.entries(ProjectType).map(([code, name]) => (
+                    <MenuItem value={name}>{name}</MenuItem>
+                  ))}
+                </Select>
+              </Grid>
+            </Grid>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button sx={{ color: "grey" }} onClick={handleClose}>
             Close
           </Button>
-          {!pastproject && (
-            <Button variant="contained" color="success" onClick={handleClose}>
-              Apply to Join
-            </Button>
-          )}
+          <Button variant="outlined" color="warning" onClick={handleClose}>
+            Filter
+          </Button>
         </DialogActions>
       </Dialog>
     </>
