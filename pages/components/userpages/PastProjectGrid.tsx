@@ -8,7 +8,7 @@ function PastProjectGrid() {
       <Grid container>
         {projectarray.map((project, index) => {
           return (
-            <Grid item xs={4} padding={"20px"}>
+            <Grid item xs={12} sm={6} md={4} padding={"20px"}>
               <Box
                 sx={{
                   minHeight: "200px",

@@ -32,17 +32,25 @@ import GlobalStore from "../store/GlobalStore";
 
 export default function Home() {
   return (
-    <GlobalStore>
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={10}
-      >
-        <TopBar />
-        <SearchJobs />
-        <Jobs />
-      </Stack>
-    </GlobalStore>
+    <div className="container">
+      <Head>
+        <title>Create Next App</title>
+        <link rel="icon" href="/favicon.ico" />
+        <title>CodingCoop</title>
+        <link rel="icon" href="/superhero-icon-original.svg" />
+      </Head>
+      <GlobalStore>
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={10}
+        >
+          <TopBar />
+          <SearchJobs />
+          <Jobs />
+        </Stack>
+      </GlobalStore>{" "}
+    </div>
   );
 }

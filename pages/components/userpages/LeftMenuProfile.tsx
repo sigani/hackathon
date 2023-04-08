@@ -1,5 +1,20 @@
-import { Avatar, Box, Grid } from "@mui/material";
+import { Avatar, Box, Grid, Typography } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import ExtensionIcon from "@mui/icons-material/Extension";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 
+let name = "Coder#134";
+let badges = [
+  MilitaryTechIcon,
+  WorkspacePremiumIcon,
+  ExtensionIcon,
+  SportsEsportsIcon,
+];
+let projectsCompleted = 8;
+let languages = ["Python", "JavaScript", "Java", "C++"];
 function LeftMenuProfile() {
   return (
     <>
@@ -38,12 +53,11 @@ function LeftMenuProfile() {
             }}
           />
         </Grid>
-        <Grid paddingLeft="20%" paddingRight="20%" height={"0"}>
+        <Grid paddingLeft="20%" paddingRight="20%">
           <Box
             padding="20px"
             minHeight={"300px"}
-            textAlign={"left"}
-            height={"calc(100vh - 369px)"}
+            textAlign={"center"}
             sx={{
               boxShadow: 2,
               backgroundColor: "rgba(232,229,224,0.08)",
@@ -52,10 +66,85 @@ function LeftMenuProfile() {
               borderRadius: "10px",
             }}
           >
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
+            <Typography
+              color={"rgba(255,255,255,0.6)"}
+              variant={"body2"}
+              paddingBottom={"5%"}
+            >
+              Hacker
+            </Typography>
+            <Typography color={"white"} variant={"body2"} paddingBottom={"15%"}>
+              {name}
+            </Typography>
+            <Typography
+              color={"rgba(255,255,255,0.6)"}
+              variant={"body2"}
+              paddingBottom={"5%"}
+            >
+              Badges
+            </Typography>
+            <Grid container direction={"row"} paddingBottom={"15%"}>
+              {badges.map((badge) => {
+                const Icon = badge;
+                return (
+                  <Grid xs={3}>
+                    <Icon
+                      sx={{
+                        color: "white",
+                      }}
+                    />
+                  </Grid>
+                );
+              })}
+            </Grid>
+            <Typography
+              color={"rgba(255,255,255,0.6)"}
+              variant={"body2"}
+              paddingBottom={"5%"}
+            >
+              Projects Completed
+            </Typography>
+            <Typography color={"white"} variant={"body2"} paddingBottom={"15%"}>
+              {projectsCompleted}
+            </Typography>
+            <Typography
+              color={"rgba(255,255,255,0.6)"}
+              variant={"body2"}
+              paddingBottom={"5%"}
+            >
+              Languages
+            </Typography>
+            <Grid container direction={"row"} paddingBottom={"15%"}>
+              {languages.map((lang) => {
+                return (
+                  <Grid>
+                    <Typography
+                      color={"white"}
+                      variant={"body2"}
+                      paddingBottom={"5%"}
+                    >
+                      {lang + "\xa0\xa0"}
+                    </Typography>
+                  </Grid>
+                );
+              })}
+            </Grid>
+            <Grid
+              container
+              direction={"row"}
+              alignItems="center"
+              paddingBottom={"15%"}
+            >
+              <Grid padding={"5px"} xs={4}>
+                <GitHubIcon color={"warning"}></GitHubIcon>
+              </Grid>
+              <Grid padding={"5px"} paddingTop={"8px"} xs={4}>
+                <img height={"18px"} src="/discord.svg" />
+              </Grid>
+              <Grid padding={"5px"} xs={4}>
+                <LinkedInIcon color={"warning"}></LinkedInIcon>
+              </Grid>
+            </Grid>
           </Box>
         </Grid>
       </Grid>
