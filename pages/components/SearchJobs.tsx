@@ -48,7 +48,7 @@ export default function SearchJobs() {
       bgcolor={"#E8E5E0"}
       alignItems={"top"}
       justifyContent={"center"}
-      columns={12}
+      columns={18}
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Grid item p={3}>
@@ -63,14 +63,9 @@ export default function SearchJobs() {
             id="demo-simple-select"
             value={type}
             defaultValue="Any"
-            label="type"
             onChange={handleChange}
+            sx={{ minWidth: "300px" }}
           >
-            {/* <MenuItem value={"Any"}>Any</MenuItem>
-            <MenuItem value={"Children"}>Children</MenuItem>
-            <MenuItem value={"Science"}>Science</MenuItem>
-            <MenuItem value={"Nature"}>Nature</MenuItem> */}
-
             {types.map((t) => (
               <MenuItem value={t}>{t}</MenuItem>
             ))}
