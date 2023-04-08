@@ -6,6 +6,11 @@ import SearchJobs from "./components/SearchJobs";
 import Jobs from "./components/Jobs";
 import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
+import APIManager from "../utils/APIManager";
+
+import express from "express";
+import { connectToDatabase } from "../utils/database.service";
+import { projectRouter } from "../routes/projects.router";
 
 // export async function getServerSideProps(context: any) {
 //   try {
@@ -31,6 +36,10 @@ import GlobalStore from "../store/GlobalStore";
 // }
 
 export default function Home() {
+  connectToDatabase().then(() => {
+    app.use("/projects", projectRouter);
+  });
+
   return (
     <GlobalStore>
       <Stack

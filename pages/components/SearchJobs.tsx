@@ -27,6 +27,7 @@ const types = [
   "Programming Languages and Compilers",
   "Software Engineering",
   "Computer Security and Cryptography",
+  "Video Games",
   "Other",
 ];
 
@@ -40,7 +41,7 @@ export default function SearchJobs() {
   return (
     <Grid
       container
-      spacing={5}
+      spacing={2}
       border={1}
       borderRadius={4}
       width={"60%"}
@@ -51,12 +52,12 @@ export default function SearchJobs() {
       columns={18}
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Grid item p={3}>
+        <Grid item p={1}>
           <InputLabel id="demo-simple-select-label">Keywords</InputLabel>
           <TextField id="outlined-basic" variant="outlined" />
         </Grid>
 
-        <Grid item p={3}>
+        <Grid item p={1}>
           <InputLabel id="demo-simple-select-label">Type of Project</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -72,26 +73,23 @@ export default function SearchJobs() {
           </Select>
         </Grid>
 
-        <Grid item p={3}>
+        <Grid item p={1}>
           <InputLabel id="demo-simple-select-label">Start Date</InputLabel>
           <DatePicker />
         </Grid>
 
-        <Grid item p={3}>
+        <Grid item p={1}>
           <InputLabel id="demo-simple-select-label">End Date</InputLabel>
           <DatePicker />
         </Grid>
 
-        <Grid item p={3}>
+        <Grid item p={1}>
           <Button
             variant="contained"
             style={{ backgroundColor: "black", color: "#E8E5E0" }}
           >
             Filter
           </Button>
-        </Grid>
-        <Grid item xs={9}>
-          {" "}
         </Grid>
       </LocalizationProvider>
     </Grid>

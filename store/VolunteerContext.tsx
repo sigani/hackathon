@@ -6,10 +6,10 @@ const VolunteerContext = createContext<VolunteerStoreValues | undefined>(
 
 interface VolunteerStoreValues {}
 
-export const useAPIContext = () => {
+export const useVolunteerContext = () => {
   const volunteerContext = useContext(VolunteerContext);
   if (volunteerContext === undefined) {
-    throw new Error("useAPIContext must be called inside a GlobalStore");
+    throw new Error("useVolunteerContext must be called inside a GlobalStore");
   }
   return volunteerContext;
 };

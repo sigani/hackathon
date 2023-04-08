@@ -11,53 +11,44 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import ProjectCards from "./userpages/ProjectCards";
 
-function Job({ handleOpen }: any) {
-  return (
-    <Grid item xs={4}>
-      <Box borderRadius={3} border={1} height={"250px"} bgcolor={"lightgray"}>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          height="inherit"
-          onClick={handleOpen}
-          sx={{ cursor: "pointer" }}
-        >
-          <Grid item height={"30%"} width={"30%"} border={1}>
-            Hi
-          </Grid>
-          <Grid item xs={2}></Grid>
-          <Grid item>
-            <Stack>
-              <div>Name of project</div>
-              <div>______________</div>
-              <div>Type</div>
-              <div>______________</div>
-              <div>Language(s)</div>
-              <div>______________</div>
-            </Stack>
-          </Grid>
-        </Grid>
-      </Box>
-    </Grid>
-  );
-}
+// function Job({ handleOpen }: any) {
+//   return (
+//     <Grid item xs={4}>
+//       <Box borderRadius={3} border={1} height={"250px"} bgcolor={"lightgray"}>
+//         <Grid
+//           container
+//           direction="row"
+//           justifyContent="center"
+//           alignItems="center"
+//           height="inherit"
+//           onClick={handleOpen}
+//           sx={{ cursor: "pointer" }}
+//         >
+//           <Grid item height={"30%"} width={"30%"} border={1}>
+//             Hi
+//           </Grid>
+//           <Grid item xs={2}></Grid>
+//           <Grid item>
+//             <Stack>
+//               <div>Name of project</div>
+//               <div>______________</div>
+//               <div>Type</div>
+//               <div>______________</div>
+//               <div>Language(s)</div>
+//               <div>______________</div>
+//             </Stack>
+//           </Grid>
+//         </Grid>
+//       </Box>
+//     </Grid>
+//   );
+// }
 
 // should i rename this?  idk
 export default function Jobs() {
-  // would first make api call to get all available projects
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    console.log("hallo");
-    setOpen(false);
-  };
-  function handleOpen() {
-    setOpen(true);
-  }
+  // would first make api call to get all available projectsq
 
   return (
     <>
@@ -68,37 +59,27 @@ export default function Jobs() {
         alignItems={"top"}
         justifyContent={"center"}
         columns={14}
-        rowSpacing={10}
+        rowSpacing={5}
       >
-        <Job handleOpen={handleOpen} />
-        <Grid item xs={1} />
-        <Job handleOpen={handleOpen} />
-        <Grid item xs={1} />
-        <Job handleOpen={handleOpen} />
-
-        <Job handleOpen={handleOpen} />
-        <Grid item xs={1} />
-        <Job handleOpen={handleOpen} />
-        <Grid item xs={1} />
-        <Job handleOpen={handleOpen} />
+        <Grid item xs={4} padding={"20px"}>
+          <ProjectCards />
+        </Grid>
+        <Grid item xs={4} padding={"20px"}>
+          <ProjectCards />
+        </Grid>
+        <Grid item xs={4} padding={"20px"}>
+          <ProjectCards />
+        </Grid>
+        <Grid item xs={4} padding={"20px"}>
+          <ProjectCards />
+        </Grid>
+        <Grid item xs={4} padding={"20px"}>
+          <ProjectCards />
+        </Grid>
+        <Grid item xs={4} padding={"20px"}>
+          <ProjectCards />
+        </Grid>
       </Grid>
-      {/* Popup after clicking on a thingy */}
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"SUPER COOL PROJECT"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            SO LIKE I WANT TO BUILD CHATGPT BUT LIKE BETTER!! XD
-          </DialogContentText>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
