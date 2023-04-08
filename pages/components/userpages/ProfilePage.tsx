@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import TopBar from "../TopBar";
 import LeftMenuProfile from "./LeftMenuProfile";
@@ -29,6 +29,13 @@ function ProfilePage() {
             <Box height={"calc(100vh-55px)"}>
               <MiddleContent />
             </Box>
+            <Button
+              variant="outlined"
+              color="warning"
+              sx={{ position: "fixed", right: "20px", top: "70px" }}
+            >
+              Collaborate
+            </Button>
           </Grid>
         </Grid>
       </Box>
