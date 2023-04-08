@@ -37,7 +37,8 @@ export default function Home() {
         direction="column"
         justifyContent="center"
         alignItems="center"
-        spacing={10}
+        spacing={5}
+        paddingBottom={"500px"}
       >
         <TopBar />
         <SearchJobs />

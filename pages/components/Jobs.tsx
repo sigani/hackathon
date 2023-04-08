@@ -1,10 +1,37 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 
 function Job() {
+  function doAction(event: MouseEvent<HTMLDivElement, MouseEvent>): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <Grid item xs={4}>
-      <Box border={1} height={"100px"}>
-        HALLO
+      <Box borderRadius={3} border={1} height={"250px"}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          height="inherit"
+          onClick={doAction}
+          sx={{ cursor: "pointer" }}
+        >
+          <Grid item height={"30%"} width={"30%"} border={1}>
+            Hi
+          </Grid>
+          <Grid item xs={2}></Grid>
+          <Grid item>
+            <Stack>
+              <div>Name of project</div>
+              <div>______________</div>
+              <div>Type</div>
+              <div>______________</div>
+              <div>Language(s)</div>
+              <div>______________</div>
+            </Stack>
+          </Grid>
+        </Grid>
       </Box>
     </Grid>
   );
@@ -14,16 +41,23 @@ export default function Jobs() {
   return (
     <Grid
       container
-      spacing={2}
-      border={1}
       width={"60%"}
       height={"30vh"}
       alignItems={"top"}
       justifyContent={"center"}
-      columns={12}
+      columns={14}
+      rowSpacing={10}
     >
       <Job />
+      <Grid item xs={1} />
       <Job />
+      <Grid item xs={1} />
+      <Job />
+
+      <Job />
+      <Grid item xs={1} />
+      <Job />
+      <Grid item xs={1} />
       <Job />
     </Grid>
   );

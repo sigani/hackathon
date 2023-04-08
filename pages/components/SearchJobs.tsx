@@ -16,6 +16,20 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 
+const types = [
+  "Any",
+  "Artificial Intelligence",
+  "Computer Graphics and Visualization",
+  "Database Systems",
+  "Human-Computer Interaction",
+  "Networking",
+  "Operating Systems",
+  "Programming Languages and Compilers",
+  "Software Engineering",
+  "Computer Security and Cryptography",
+  "Other",
+];
+
 export default function SearchJobs() {
   const [type, setType] = useState("Any");
 
@@ -38,12 +52,12 @@ export default function SearchJobs() {
     >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Grid item p={3}>
-          <InputLabel id="demo-simple-select-label">Type of Event</InputLabel>
-          <TextField id="outlined-basic" label="Keywords" variant="outlined" />
+          <InputLabel id="demo-simple-select-label">Keywords</InputLabel>
+          <TextField id="outlined-basic" variant="outlined" />
         </Grid>
 
         <Grid item p={3}>
-          <InputLabel id="demo-simple-select-label">Type of Event</InputLabel>
+          <InputLabel id="demo-simple-select-label">Type of Project</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -52,10 +66,14 @@ export default function SearchJobs() {
             label="type"
             onChange={handleChange}
           >
-            <MenuItem value={"Any"}>Any</MenuItem>
+            {/* <MenuItem value={"Any"}>Any</MenuItem>
             <MenuItem value={"Children"}>Children</MenuItem>
             <MenuItem value={"Science"}>Science</MenuItem>
-            <MenuItem value={"Nature"}>Nature</MenuItem>
+            <MenuItem value={"Nature"}>Nature</MenuItem> */}
+
+            {types.map((t) => (
+              <MenuItem value={t}>{t}</MenuItem>
+            ))}
           </Select>
         </Grid>
 
