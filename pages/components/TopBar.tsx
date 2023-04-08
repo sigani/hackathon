@@ -12,9 +12,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CssBaseline, Link } from "@mui/material";
 
-const pages = ["Popular Projects", "Top Contributors", "SEARCH"];
+const pages = [
+  "Popular Projects",
+  "Top Contributors",
+  "SEARCH",
+  "Submit a Project",
+];
 const settings = ["Profile", "Account", "Settings", "Logout"];
-const linksPages = ["/", "/", "/"];
+const linksPages = ["/", "/", "/", "/"];
 const linksSettings = ["/components/userpages/ProfilePage", "/", "/", "/"];
 
 function TopBar() {
