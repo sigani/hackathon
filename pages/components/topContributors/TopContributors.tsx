@@ -10,7 +10,6 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
-  IconButton,
 } from "@mui/material";
 import TopBar from "../TopBar";
 import ContributorsFilter from "./ContributorsFilter";
@@ -40,7 +39,7 @@ let users = [
   "Best project ever",
 ];
 
-function ProjectSummary({ handleOpen }: any) {
+function ProjectSummary() {
   return (
     <>
       <TopBar></TopBar>
@@ -48,7 +47,16 @@ function ProjectSummary({ handleOpen }: any) {
       <Grid container direction={"row"}>
         {users.map(() => {
           return (
-            <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
+            <Grid
+              container
+              xs={12}
+              sm={4}
+              md={3}
+              lg={2}
+              padding={"30px"}
+              alignItems={"stretch"}
+              justifyContent="space-between"
+            >
               <UserCards></UserCards>
             </Grid>
           );
@@ -73,7 +81,7 @@ export default function TopContributors() {
   return (
     <>
       <Grid container justifyContent={"center"} height={"100%"}>
-        <ProjectSummary handleOpen={handleOpen} />
+        <ProjectSummary />
       </Grid>
       {/* Popup after clicking on a thingy */}
 

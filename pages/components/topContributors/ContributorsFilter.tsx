@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import {
   Box,
-  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
@@ -19,7 +18,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { ProjectType } from "../../../interfaces/ProjectType";
+import { Languages } from "../../../interfaces/Languages";
 
 function ProjectSummary({ handleOpen }: any) {
   return (
@@ -76,7 +75,7 @@ export default function ContributorsFilter() {
               <Grid container paddingBottom={"20px"} direction={"row"}>
                 <Grid item paddingRight={"30px"}>
                   <InputLabel id="demo-simple-select-label">
-                    Keywords
+                    Search by username
                   </InputLabel>
                   <TextField
                     color="success"
@@ -86,7 +85,7 @@ export default function ContributorsFilter() {
                 </Grid>
                 <Grid item>
                   <InputLabel id="demo-simple-select-label">
-                    Type of Project
+                    Languages
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
@@ -97,55 +96,11 @@ export default function ContributorsFilter() {
                     color={"success"}
                     sx={{ minWidth: "300px" }}
                   >
-                    {Object.entries(ProjectType).map(([code, name]) => (
+                    {Object.entries(Languages).map(([code, name]) => (
                       <MenuItem value={name}>{name}</MenuItem>
                     ))}
                   </Select>
                 </Grid>
-              </Grid>
-              <Grid paddingBottom={"20px"}>
-                <FormControlLabel
-                  label="Not yet started"
-                  control={
-                    <Checkbox
-                      defaultChecked
-                      sx={{
-                        color: "orange",
-                        "&.Mui-checked": {
-                          color: "orange",
-                        },
-                      }}
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Started projects"
-                  control={
-                    <Checkbox
-                      defaultChecked
-                      sx={{
-                        color: "orange",
-                        "&.Mui-checked": {
-                          color: "orange",
-                        },
-                      }}
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Completed projects"
-                  control={
-                    <Checkbox
-                      defaultChecked
-                      sx={{
-                        color: "orange",
-                        "&.Mui-checked": {
-                          color: "orange",
-                        },
-                      }}
-                    />
-                  }
-                />
               </Grid>
               <Grid paddingBottom={"20px"}>
                 <RadioGroup
@@ -155,7 +110,7 @@ export default function ContributorsFilter() {
                   name="radio-buttons-group"
                 >
                   <FormControlLabel
-                    label="All projects"
+                    label="All users"
                     value={"all"}
                     control={
                       <Radio
@@ -169,8 +124,22 @@ export default function ContributorsFilter() {
                     }
                   />
                   <FormControlLabel
-                    label="Looking for team only"
-                    value={"team"}
+                    label="Looking to start only"
+                    value={"start"}
+                    control={
+                      <Radio
+                        sx={{
+                          color: "orange",
+                          "&.Mui-checked": {
+                            color: "orange",
+                          },
+                        }}
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="Looking to join team only"
+                    value={"join"}
                     control={
                       <Radio
                         sx={{
