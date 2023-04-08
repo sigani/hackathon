@@ -47,9 +47,11 @@ function TopBar() {
         position="sticky"
         sx={{ height: "55px", backgroundColor: "rgb(47,47,47)" }}
       >
-        <Container maxWidth="xl" fixed>
-          <Toolbar disableGutters sx={{ height: "55px" }}>
-            <div className={"textdiv"}></div>
+        <Container maxWidth={false}>
+          <Toolbar
+            disableGutters
+            sx={{ height: "55px", padding: "0", margin: "0" }}
+          >
             <Typography
               variant="h6"
               noWrap
@@ -79,7 +81,49 @@ function TopBar() {
               >
                 {/*<MenuIcon />*/}
               </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href=""
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              {"</>"} CodeCoop
+            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, index) => (
                 <Link href={linksPages[index]}>

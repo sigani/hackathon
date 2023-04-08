@@ -10,7 +10,7 @@ function ProfilePage() {
       <TopBar />
       <Box
         sx={{
-          height: "calc(100vh - 55px)",
+          height: "calc(100vh)",
           width: "100%",
           backgroundColor: "#E8E5E0",
         }}
@@ -21,9 +21,8 @@ function ProfilePage() {
             item
             xs={9}
             sx={{
-              backgroundColor: "rgba(82,78,78,0.69)",
+              backgroundColor: "rgba(82,78,78,0.35)",
               height: "calc(100vh-55px)",
-              overflowY: "scroll",
             }}
           >
             {" "}

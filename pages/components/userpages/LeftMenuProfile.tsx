@@ -9,10 +9,14 @@ function LeftMenuProfile() {
         direction="column"
         justifyContent="center"
         style={{ textAlign: "center" }}
+        height={"calc(100vh - 55px)"}
         sx={{
           backgroundColor: "rgba(0,0,0,0.81)",
           boxShadow: 5,
-          height: "calc(100vh - 55px)",
+          top: "55px",
+          overflowY: "scroll",
+          position: "fixed",
+          minWidth: "25%",
         }}
       >
         <Grid
@@ -22,12 +26,14 @@ function LeftMenuProfile() {
           alignItems="center"
           justifyContent="center"
           padding={"60px"}
+          width={"100%"}
+          height={"45%"}
         >
           <Avatar
             src={"../superhero-icon-original.svg"}
             sx={{
-              width: "200px",
-              height: "200px",
+              minWidth: "100%",
+              height: "100%",
               backgroundColor: "orange",
             }}
           />
@@ -37,11 +43,12 @@ function LeftMenuProfile() {
             padding="20px"
             minHeight={"300px"}
             textAlign={"left"}
+            height={"calc(100vh - 369px)"}
             sx={{
               boxShadow: 2,
-              backgroundColor: "rgba(232,229,224,0)",
+              backgroundColor: "rgba(232,229,224,0.08)",
               border: "solid",
-              borderColor: "rgba(232,229,224,0.12)",
+              borderColor: "rgba(232,229,224,0.08)",
               borderRadius: "10px",
             }}
           >
