@@ -1,13 +1,10 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import {
+  Box,
   Dialog,
   DialogActions,
   DialogContent,
@@ -16,34 +13,49 @@ import {
   Grid,
   IconButton,
 } from "@mui/material";
+import TopBar from "../TopBar";
+import ProjectCards from "../userpages/ProjectCards";
+import FilterPopup from "./FilterPopup";
 
 let pastproject = false;
 let title = "BlackJack";
 let description =
   "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
 let projectIm = "/projects/p1.png";
+let projects = [
+  "Cool Project",
+  "Another cool project",
+  "Woooo My great idea",
+  "Best project ever",
+  "Cool Project",
+  "Another cool project",
+  "Woooo My great idea",
+  "Best project ever",
+  "Cool Project",
+  "Another cool project",
+  "Woooo My great idea",
+  "Best project ever",
+  "Cool Project",
+  "Another cool project",
+  "Woooo My great idea",
+  "Best project ever",
+];
 
 function ProjectSummary({ handleOpen }: any) {
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={handleOpen}>
-      <CardMedia sx={{ height: 140 }} image={projectIm} />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description.substring(0, Math.min(100, description.length))}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <Button sx={{ color: "grey" }} size="small">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <>
+      <TopBar></TopBar>
+      <FilterPopup></FilterPopup>
+      <Grid container direction={"row"}>
+        {projects.map(() => {
+          return (
+            <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
+              <ProjectCards></ProjectCards>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </>
   );
 }
 

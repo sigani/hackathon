@@ -1,11 +1,18 @@
 export type Project = {
+  id: string | null;
   name: string;
   type: string;
   startDate: Date;
   endDate?: Date;
   languages: string[];
   description: string;
-  owner: string; // email of user
+  owner: number; // id
+  members: number[]; // array of ids of current participants
+  teamSize: number; // how many team members they are looking for
+  openForApplications: boolean;
+  completed: boolean;
+  photos: [];
+  likes: string[];
 };
 
 // export default class Project {

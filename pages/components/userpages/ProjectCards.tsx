@@ -32,7 +32,7 @@ function ProjectSummary({ handleOpen }: any) {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description.substring(0, Math.min(100, description.length))}
+          {description.substring(0, Math.min(150, description.length)) + "..."}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
