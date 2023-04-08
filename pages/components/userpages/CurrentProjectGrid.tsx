@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import ProjectCard from "./ProjectCard";
+import ProjectCards from "./ProjectCards";
 
 let projectarray = ["P1", "p2", "p3", "p4"];
 function PastProjectGrid() {
@@ -9,7 +9,7 @@ function PastProjectGrid() {
         {projectarray.map((project, index) => {
           return (
             <Grid item xs={4} padding={"20px"}>
-              <ProjectCard></ProjectCard>
+              <ProjectCards></ProjectCards>
             </Grid>
           );
         })}
