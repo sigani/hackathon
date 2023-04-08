@@ -13,17 +13,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-function Job() {
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    console.log("hallo");
-    setOpen(false);
-  };
-  function handleOpen() {
-    setOpen(true);
-  }
-
+function Job({ handleOpen }: any) {
   return (
     <Grid item xs={4}>
       <Box borderRadius={3} border={1} height={"250px"} bgcolor={"lightgray"}>
@@ -50,23 +40,6 @@ function Job() {
               <div>______________</div>
             </Stack>
           </Grid>
-
-          {/* Popup after clicking on a thingy */}
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {"SUPER COOL PROJECT"}
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                SO LIKE I WANT TO BUILD CHATGPT BUT LIKE BETTER!! XD
-              </DialogContentText>
-            </DialogContent>
-          </Dialog>
         </Grid>
       </Box>
     </Grid>
@@ -76,28 +49,56 @@ function Job() {
 // should i rename this?  idk
 export default function Jobs() {
   // would first make api call to get all available projects
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    console.log("hallo");
+    setOpen(false);
+  };
+  function handleOpen() {
+    setOpen(true);
+  }
 
   return (
-    <Grid
-      container
-      width={"60%"}
-      height={"30vh"}
-      alignItems={"top"}
-      justifyContent={"center"}
-      columns={14}
-      rowSpacing={10}
-    >
-      <Job />
-      <Grid item xs={1} />
-      <Job />
-      <Grid item xs={1} />
-      <Job />
+    <>
+      <Grid
+        container
+        width={"60%"}
+        height={"30vh"}
+        alignItems={"top"}
+        justifyContent={"center"}
+        columns={14}
+        rowSpacing={10}
+      >
+        <Job handleOpen={handleOpen} />
+        <Grid item xs={1} />
+        <Job handleOpen={handleOpen} />
+        <Grid item xs={1} />
+        <Job handleOpen={handleOpen} />
 
-      <Job />
-      <Grid item xs={1} />
-      <Job />
-      <Grid item xs={1} />
-      <Job />
-    </Grid>
+        <Job handleOpen={handleOpen} />
+        <Grid item xs={1} />
+        <Job handleOpen={handleOpen} />
+        <Grid item xs={1} />
+        <Job handleOpen={handleOpen} />
+      </Grid>
+      {/* Popup after clicking on a thingy */}
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"SUPER COOL PROJECT"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            SO LIKE I WANT TO BUILD CHATGPT BUT LIKE BETTER!! XD
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
