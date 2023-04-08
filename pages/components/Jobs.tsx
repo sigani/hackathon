@@ -1,8 +1,8 @@
 import { Box, Grid, Stack } from "@mui/material";
 
 function Job() {
-  function doAction(event: MouseEvent<HTMLDivElement, MouseEvent>): void {
-    throw new Error("Function not implemented.");
+  function doAction(): void {
+    console.log("hi");
   }
 
   return (
