@@ -19,7 +19,8 @@
     "mongodb": "^4.15.0",
     "next": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^2.1.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

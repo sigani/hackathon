@@ -1,9 +1,7 @@
-const apiPaths = {
-  projects: () => `/projects`,
-};
-
 export default class APIManager {
   static instance: APIManager;
+
+  private apiBasePath: string = "/api";
 
   public static async getInstance() {
     if (this.instance == undefined) {
@@ -13,22 +11,23 @@ export default class APIManager {
   }
 
   public async getProjects() {
-    return await this.fetch(apiPaths.projects(), "GET");
+    const url = `${this.apiBasePath}/projects`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
   }
 
-  public async insertProject(data: any) {
-    return await this.fetch(apiPaths.projects(), "GET", data);
-  }
-
-  private async fetch(url: string, method: string, data?: any) {
-    return fetch(url).then((res) => {
-      if (res.status !== 200) {
-        throw new Error(
-          `Request to ${url} failed with status code: ${res.status}`
-        );
-      }
-
-      return res.json();
-    });
+  public async insertProject(d: any) {
+    const url = `${this.apiBasePath}/projects`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(d),
+    };
+    const res = await fetch(url, options);
+    const data = await res.json();
+    return data;
   }
 }

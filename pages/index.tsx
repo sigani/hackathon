@@ -8,10 +8,6 @@ import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
 import APIManager from "../utils/APIManager";
 
-import express from "express";
-import { connectToDatabase } from "../utils/database.service";
-import { projectRouter } from "../routes/projects.router";
-
 // export async function getServerSideProps(context: any) {
 //   try {
 //     await clientPromise;
@@ -36,8 +32,10 @@ import { projectRouter } from "../routes/projects.router";
 // }
 
 export default function Home() {
-  connectToDatabase().then(() => {
-    app.use("/projects", projectRouter);
+  APIManager.getInstance().then((instance) => {
+    instance.getProjects().then((res) => {
+      console.log(res);
+    });
   });
 
   return (
