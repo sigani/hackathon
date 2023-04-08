@@ -1,5 +1,5 @@
 export type Project = {
-  id: number;
+  id: string | null;
   name: string;
   type: string;
   startDate: Date;
@@ -9,7 +9,10 @@ export type Project = {
   owner: number; // id
   members: number[]; // array of ids of current participants
   teamSize: number; // how many team members they are looking for
+  openForApplications: boolean;
   completed: boolean;
+  photos: [];
+  likes: string[];
 };
 
 // export default class Project {

@@ -2,8 +2,8 @@ import { Project } from "./Project";
 import { Badges } from "./Badges";
 
 export type User = {
-  id: number;
-  name: string;
+  id: string | null;
+  username: string;
   email: string;
   languages: { lang: string; skill: number }[];
   description: string;
