@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import {
   Box,
-  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
@@ -19,7 +18,6 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { ProjectType } from "../../../interfaces/ProjectType";
 import { Languages } from "../../../interfaces/Languages";
 
 function ProjectSummary({ handleOpen }: any) {
@@ -38,7 +36,7 @@ function ProjectSummary({ handleOpen }: any) {
   );
 }
 
-export default function FilterPopup() {
+export default function ContributorsFilter() {
   const [type, setType] = useState("Any");
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
@@ -77,7 +75,7 @@ export default function FilterPopup() {
               <Grid container paddingBottom={"20px"} direction={"row"}>
                 <Grid item paddingRight={"30px"}>
                   <InputLabel id="demo-simple-select-label">
-                    Keywords
+                    Search by username
                   </InputLabel>
                   <TextField
                     color="success"
@@ -87,7 +85,7 @@ export default function FilterPopup() {
                 </Grid>
                 <Grid item>
                   <InputLabel id="demo-simple-select-label">
-                    Type of Project
+                    Languages
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
@@ -98,76 +96,11 @@ export default function FilterPopup() {
                     color={"success"}
                     sx={{ minWidth: "300px" }}
                   >
-                    {Object.entries(ProjectType).map(([code, name]) => (
-                      <MenuItem value={name}>{name}</MenuItem>
-                    ))}
-                  </Select>
-                </Grid>
-              </Grid>
-              <Grid container paddingBottom={"20px"} direction={"row"}>
-                <Grid item>
-                  <InputLabel id="demo-simple-select-label">
-                    Language
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={type}
-                    defaultValue="Any"
-                    onChange={handleChange}
-                    color={"success"}
-                    sx={{ minWidth: "300px" }}
-                  >
-                    <MenuItem value={"Any"}>Any</MenuItem>
                     {Object.entries(Languages).map(([code, name]) => (
                       <MenuItem value={name}>{name}</MenuItem>
                     ))}
                   </Select>
                 </Grid>
-              </Grid>
-              <Grid paddingBottom={"20px"}>
-                <FormControlLabel
-                  label="Not yet started"
-                  control={
-                    <Checkbox
-                      defaultChecked
-                      sx={{
-                        color: "orange",
-                        "&.Mui-checked": {
-                          color: "orange",
-                        },
-                      }}
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Started projects"
-                  control={
-                    <Checkbox
-                      defaultChecked
-                      sx={{
-                        color: "orange",
-                        "&.Mui-checked": {
-                          color: "orange",
-                        },
-                      }}
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Completed projects"
-                  control={
-                    <Checkbox
-                      defaultChecked
-                      sx={{
-                        color: "orange",
-                        "&.Mui-checked": {
-                          color: "orange",
-                        },
-                      }}
-                    />
-                  }
-                />
               </Grid>
               <Grid paddingBottom={"20px"}>
                 <RadioGroup
@@ -177,7 +110,7 @@ export default function FilterPopup() {
                   name="radio-buttons-group"
                 >
                   <FormControlLabel
-                    label="All projects"
+                    label="All users"
                     value={"all"}
                     control={
                       <Radio
@@ -191,8 +124,22 @@ export default function FilterPopup() {
                     }
                   />
                   <FormControlLabel
-                    label="Looking for team only"
-                    value={"team"}
+                    label="Looking to start team only"
+                    value={"start"}
+                    control={
+                      <Radio
+                        sx={{
+                          color: "orange",
+                          "&.Mui-checked": {
+                            color: "orange",
+                          },
+                        }}
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="Looking to join team only"
+                    value={"join"}
                     control={
                       <Radio
                         sx={{
