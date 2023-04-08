@@ -14,7 +14,7 @@ import { CssBaseline, Link } from "@mui/material";
 
 const pages = ["Popular Projects", "Top Contributors", "SEARCH"];
 const settings = ["Profile", "Account", "Settings", "Logout"];
-const linksPages = ["/", "/", "/"];
+const linksPages = ["/components/popular/PopularProjects", "/", "/"];
 const linksSettings = ["/components/userpages/ProfilePage", "/", "/", "/"];
 
 function TopBar() {

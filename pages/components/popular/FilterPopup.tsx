@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import {
+  Box,
   Dialog,
   DialogActions,
   DialogContent,
@@ -25,29 +26,21 @@ let projectIm = "/projects/p1.png";
 
 function ProjectSummary({ handleOpen }: any) {
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={handleOpen}>
-      <CardMedia sx={{ height: 140 }} image={projectIm} />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {description.substring(0, Math.min(150, description.length)) + "..."}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <Button sx={{ color: "grey" }} size="small">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <Box
+      width="100%"
+      paddingRight={"30px"}
+      paddingTop={"30px"}
+      display="flex"
+      justifyContent="flex-end"
+    >
+      <Button variant="outlined" color="warning" onClick={handleOpen}>
+        Filter
+      </Button>
+    </Box>
   );
 }
 
-export default function ProjectCards() {
+export default function FilterPopup() {
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
 
