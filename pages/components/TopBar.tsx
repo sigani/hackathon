@@ -12,6 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { CssBaseline } from "@mui/material";
+import Link from "next/link";
 
 const pages = ["Opportunities", "Superheroes", "News"];
 const settings = ["Profile", "Account", "Settings", "Logout"];
@@ -164,7 +165,9 @@ function TopBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Link href="/components/userpages/ProfilePage">
+                      <Typography textAlign="center">{setting}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>
