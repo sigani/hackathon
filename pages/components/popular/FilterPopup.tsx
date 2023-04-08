@@ -1,11 +1,5 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import {
   Box,
@@ -17,21 +11,15 @@ import {
   DialogTitle,
   FormControlLabel,
   Grid,
-  IconButton,
   InputLabel,
   MenuItem,
   Radio,
   RadioGroup,
   Select,
   SelectChangeEvent,
+  TextField,
 } from "@mui/material";
 import { ProjectType } from "../../../interfaces/ProjectType";
-
-let pastproject = false;
-let title = "BlackJack";
-let description =
-  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
-let projectIm = "/projects/p1.png";
 
 function ProjectSummary({ handleOpen }: any) {
   return (
@@ -85,6 +73,36 @@ export default function FilterPopup() {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <Grid container direction={"column"}>
+              <Grid container paddingBottom={"20px"} direction={"row"}>
+                <Grid item paddingRight={"30px"}>
+                  <InputLabel id="demo-simple-select-label">
+                    Keywords
+                  </InputLabel>
+                  <TextField
+                    color="success"
+                    id="outlined-basic"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item>
+                  <InputLabel id="demo-simple-select-label">
+                    Type of Project
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={type}
+                    defaultValue="Any"
+                    onChange={handleChange}
+                    color={"success"}
+                    sx={{ minWidth: "300px" }}
+                  >
+                    {Object.entries(ProjectType).map(([code, name]) => (
+                      <MenuItem value={name}>{name}</MenuItem>
+                    ))}
+                  </Select>
+                </Grid>
+              </Grid>
               <Grid paddingBottom={"20px"}>
                 <FormControlLabel
                   label="Not yet started"
@@ -165,25 +183,6 @@ export default function FilterPopup() {
                     }
                   />
                 </RadioGroup>
-              </Grid>
-              <Grid paddingBottom={"20px"}>
-                {" "}
-                <InputLabel id="demo-simple-select-label">
-                  Type of Project
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={type}
-                  defaultValue="Any"
-                  onChange={handleChange}
-                  color={"success"}
-                  sx={{ minWidth: "300px" }}
-                >
-                  {Object.entries(ProjectType).map(([code, name]) => (
-                    <MenuItem value={name}>{name}</MenuItem>
-                  ))}
-                </Select>
               </Grid>
             </Grid>
           </DialogContentText>
