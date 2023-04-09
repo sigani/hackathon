@@ -7,37 +7,9 @@ import Jobs from "./components/Jobs";
 import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
 import APIManager from "../utils/APIManager";
-
-// export async function getServerSideProps(context: any) {
-//   try {
-//     await clientPromise;
-//     // `await clientPromise` will use the default database passed in the MONGODB_URI
-//     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
-//     //
-//     // `const client = await clientPromise`
-//     // `const db = client.db("myDatabase")`
-//     //
-//     // Then you can execute queries against your database like so:
-//     // db.find({}) or any of the MongoDB Node Driver commands
-
-//     return {
-//       props: { isConnected: true },
-//     };
-//   } catch (e) {
-//     console.error(e);
-//     return {
-//       props: { isConnected: false },
-//     };
-//   }
-// }
+import { useEffect } from "react";
 
 export default function Home() {
-  APIManager.getInstance().then((instance) => {
-    instance.getProjects().then((res) => {
-      console.log(res);
-    });
-  });
-
   return (
     <GlobalStore>
       <Stack

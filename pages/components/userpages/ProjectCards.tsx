@@ -23,16 +23,17 @@ let description =
   "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
 let projectIm = "/projects/p1.png";
 
-function ProjectSummary({ handleOpen }: any) {
+function ProjectSummary({ handleOpen, project }: any) {
   return (
     <Card sx={{ maxWidth: 345 }} onClick={handleOpen}>
       <CardMedia sx={{ height: 140 }} image={projectIm} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {project.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description.substring(0, Math.min(150, description.length)) + "..."}
+          {project.description.substring(0, Math.min(150, description.length)) +
+            "..."}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -47,7 +48,8 @@ function ProjectSummary({ handleOpen }: any) {
   );
 }
 
-export default function ProjectCards() {
+export default function ProjectCards({ project }: any) {
+  console.log(project);
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
 
@@ -62,7 +64,7 @@ export default function ProjectCards() {
   return (
     <>
       <Grid container justifyContent={"center"} height={"100%"}>
-        <ProjectSummary handleOpen={handleOpen} />
+        <ProjectSummary handleOpen={handleOpen} project={project} />
       </Grid>
       {/* Popup after clicking on a thingy */}
 
@@ -74,7 +76,7 @@ export default function ProjectCards() {
         fullWidth={true}
         maxWidth={"md"}
       >
-        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{project.name}</DialogTitle>
         <Card
           sx={{ maxWidth: 345, padding: "20px", boxShadow: "none" }}
           onClick={handleOpen}
@@ -83,7 +85,7 @@ export default function ProjectCards() {
         </Card>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {description} {description} {description}
+            {project.description}
           </DialogContentText>
         </DialogContent>
         <DialogActions>

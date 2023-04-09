@@ -13,17 +13,5 @@ export type Project = {
   completed: boolean;
   photos: [];
   likes: string[];
+  website: string;
 };
-
-// export default class Project {
-//   constructor(
-//     public name: string,
-//     public type: string,
-//     public languages: string[],
-//     public description: string,
-//     public owner: string,
-//     public startDate: Date,
-//     public endDate?: Date,
-//     public id?: ObjectId
-//   ) {}
-// }

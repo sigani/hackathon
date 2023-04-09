@@ -16,6 +16,7 @@ import {
 import TopBar from "../TopBar";
 import ProjectCards from "../userpages/ProjectCards";
 import FilterPopup from "./FilterPopup";
+import { Project } from "../../../interfaces/Project";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -41,6 +42,22 @@ let projects = [
   "Best project ever",
 ];
 
+let dummyProject: Project = {
+  id: "69",
+  name: title,
+  type: "Video Game",
+  languages: ["JavaScript"],
+  description: description,
+  owner: "69",
+  members: ["69"],
+  teamSize: 2,
+  openForApplications: true,
+  completed: true,
+  photos: [],
+  likes: [],
+  website: "",
+};
+
 function ProjectSummary() {
   return (
     <>
@@ -50,7 +67,7 @@ function ProjectSummary() {
         {projects.map(() => {
           return (
             <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
-              <ProjectCards></ProjectCards>
+              <ProjectCards project={dummyProject} />
             </Grid>
           );
         })}

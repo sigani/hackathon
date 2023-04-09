@@ -58,6 +58,7 @@ export default function AddAProject(props: any) {
   const [members, setMembers] = useState(2);
   const [open, setOpen] = useState(false);
   const [check, setCheck] = useState(false);
+  const [website, setWebsite] = useState("");
 
   const handleClose = () => {
     setOpen(false);
@@ -129,6 +130,7 @@ export default function AddAProject(props: any) {
       completed: false,
       photos: [],
       likes: [],
+      website: website,
     };
 
     console.log(project);
@@ -249,6 +251,7 @@ export default function AddAProject(props: any) {
                   id="outlined-multiline-static"
                   multiline
                   rows={4}
+                  placeholder="What is the project about?"
                   onChange={(event) => setDesc(event.target.value)}
                   fullWidth
                 />
@@ -271,6 +274,16 @@ export default function AddAProject(props: any) {
                   <MenuItem value={5}>5</MenuItem>
                   <MenuItem value={30}>6+</MenuItem>
                 </Select>
+              </Grid>
+
+              <Grid item xs={6}>
+                <InputLabel id="demo-simple-select-label">Website</InputLabel>
+                <TextField
+                  id="outlined-multiline-static"
+                  onChange={(event) => setWebsite(event.target.value)}
+                  placeholder={"GitHub, personal website, etc..."}
+                  fullWidth
+                />
               </Grid>
             </Grid>
           </DialogContent>
