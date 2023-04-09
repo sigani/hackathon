@@ -178,7 +178,14 @@ function TopBar() {
                 height={"55px"}
                 alignContent={"center"}
               >
-                <Grid item sx={{ height: "55px", padding: "14px" }}>
+                <Grid
+                  item
+                  sx={{
+                    height: "55px",
+                    padding: "14px",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
                   <Typography color={"white"}>
                     {session ? <strong>{name(session)}</strong> : "Anonymous"}
                   </Typography>
