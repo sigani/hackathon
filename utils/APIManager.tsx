@@ -31,6 +31,8 @@ export default class APIManager {
     };
     const res = await fetch(url);
     const data = await res.json();
+    console.log(data);
+    console.log(email);
     return data;
   }
 

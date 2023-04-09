@@ -12,7 +12,9 @@ export default async function handler(
   console.log(query);
   switch (method) {
     case "GET":
-      const user = await collection.findOne();
+      const user = await collection.findOne({
+        email: query.id as string,
+      });
       return res.status(200).json(user);
 
     default:
