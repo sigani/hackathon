@@ -21,6 +21,7 @@ import { useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Project } from "../../interfaces/Project";
+import APIManager from "../../utils/APIManager";
 
 const types = [
   "Artificial Intelligence",
@@ -54,9 +55,18 @@ export default function AddAProject(props: any) {
   const [startDate, setStartDate] = useState(nullDate);
   const [endDate, setEndDate] = useState(nullDate);
   const [desc, setDesc] = useState("");
+  const [members, setMembers] = useState(2);
+  const [open, setOpen] = useState(false);
+  const [check, setCheck] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+    props.handleClose();
+  };
 
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
+    setCheck(false);
   };
 
   const handleChangeLang = (event: SelectChangeEvent<string[]>) => {
@@ -67,10 +77,73 @@ export default function AddAProject(props: any) {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+    setCheck(false);
+  };
+
+  const ConfirmationPage = () => {
+    return (
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        fullWidth={true}
+        maxWidth={"md"}
+      >
+        <DialogTitle id="alert-dialog-title">Success!</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Project Successfully Added!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button sx={{ color: "grey" }} onClick={handleClose}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
+
+  const createEvent = () => {
+    if (name === "") {
+      setCheck(true);
+      return;
+    }
+    if (type === "") {
+      setCheck(true);
+      return;
+    }
+
+    let project: Project = {
+      id: "69",
+      name: name,
+      type: type,
+      startDate: startDate,
+      endDate: endDate,
+      languages: language,
+      description: desc,
+      owner: "69",
+      members: ["69"],
+      teamSize: members,
+      openForApplications: true,
+      completed: false,
+      photos: [],
+      likes: [],
+    };
+
+    console.log(project);
+
+    APIManager.getInstance().then((instance) => {
+      instance.insertProject(project).then(() => {
+        setOpen(true);
+      });
+    });
   };
 
   return (
     <>
+      <ConfirmationPage />
       <Grid container justifyContent={"center"} height={"100%"}></Grid>
       {/* Popup after clicking on a thingy */}
 
@@ -93,12 +166,17 @@ export default function AddAProject(props: any) {
                   defaultValue=""
                   helperText="What will your project be called"
                   variant="standard"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   fullWidth
+                  error={check}
                 />
               </Grid>
 
               <Grid item xs={6}>
-                <InputLabel id="demo-simple-select-label">Type*</InputLabel>
+                <InputLabel id="demo-simple-select-label" error={check}>
+                  Type*
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -106,6 +184,7 @@ export default function AddAProject(props: any) {
                   defaultValue="Any"
                   onChange={handleChange}
                   sx={{ minWidth: "300px" }}
+                  error={check}
                 >
                   {types.map((t) => (
                     <MenuItem value={t}>{t}</MenuItem>
@@ -124,12 +203,12 @@ export default function AddAProject(props: any) {
                 <InputLabel id="demo-simple-select-label">
                   Start Date
                 </InputLabel>
-                <DatePicker />
+                <DatePicker onChange={(nv) => setStartDate(nv as Date)} />
               </Grid>
 
               <Grid item xs={6}>
                 <InputLabel id="demo-simple-select-label">End Date</InputLabel>
-                <DatePicker />
+                <DatePicker onChange={(nv) => setEndDate(nv as Date)} />
               </Grid>
 
               <Grid item xs={6}>
@@ -168,8 +247,28 @@ export default function AddAProject(props: any) {
                   id="outlined-multiline-static"
                   multiline
                   rows={4}
+                  onChange={(event) => setDesc(event.target.value)}
                   fullWidth
                 />
+              </Grid>
+
+              <Grid item xs={6}>
+                <InputLabel id="demo-simple-select-label">
+                  Number of Members
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={members}
+                  label="Members"
+                  onChange={(event) => setMembers(event.target.value as number)}
+                >
+                  <MenuItem value={2}>2</MenuItem>
+                  <MenuItem value={3}>3</MenuItem>
+                  <MenuItem value={4}>4</MenuItem>
+                  <MenuItem value={5}>5</MenuItem>
+                  <MenuItem value={30}>6+</MenuItem>
+                </Select>
               </Grid>
             </Grid>
           </DialogContent>
@@ -181,6 +280,7 @@ export default function AddAProject(props: any) {
               variant="contained"
               // color="success"
               sx={{ backgroundColor: "#FA9E64" }}
+              onClick={createEvent}
             >
               Submit
             </Button>
