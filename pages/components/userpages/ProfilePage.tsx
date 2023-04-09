@@ -32,6 +32,7 @@ function Profile() {
     });
   }, [session]);
 
+  // @ts-ignore
   return (
     <>
       <LogInButton></LogInButton>
