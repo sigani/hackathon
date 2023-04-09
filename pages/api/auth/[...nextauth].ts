@@ -10,7 +10,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.REACT_APP_ClientSecret as string,
     }),
   ],
-  secret: "hello",
+  secret: process.env.REACT_APP_Top_Secret as string,
 };
 
 export default NextAuth(authOptions);

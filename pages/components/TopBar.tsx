@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { SessionProvider, useSession } from "next-auth/react";
 
 const pages = ["Popular Projects", "Contributors", "SEARCH"];
-const settings = ["Profile", "Account", "Settings", "Logout"];
+const settings = ["Profile", "Account", "Requests", "Logout"];
 const linksPages = [
   "/components/popular/PopularProjects",
   "/components/topContributors/TopContributors",
@@ -178,13 +178,16 @@ function TopBar() {
                     {session ? <strong>{name(session)}</strong> : ""}
                   </Typography>
                 </Grid>
+
                 <Tooltip title="Login to continue">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt={name(session)}
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
+                  <Grid>
+                    <IconButton onClick={handleOpenUserMenu}>
+                      <Avatar
+                        alt={name(session)}
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Grid>
                 </Tooltip>
               </Grid>
               {session && (
