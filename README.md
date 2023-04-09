@@ -1,4 +1,4 @@
-[![Youtube link](https://img.youtube.com/vi/GE6GAWR8xJE&t=1s&ab_channel=SiganiA.jpg)](https://www.youtube.com/watch?v=GE6GAWR8xJE&t=1s&ab_channel=SiganiA)
+[![Youtube link](https://img.youtube.com/vi/GE6GAWR8xJE.jpg)](https://www.youtube.com/watch?v=GE6GAWR8xJE&t=1s&ab_channel=SiganiA)
 
 
 ## Example app using MongoDB
