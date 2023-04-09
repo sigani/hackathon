@@ -18,23 +18,23 @@ export default function LogInButton() {
                 return;
               }
             }
-          }
 
-          APIManager.getInstance().then((inst) => {
-            let newUser: User = {
-              username: session.user?.name as string,
-              email: session.user?.email as string,
-              languages: [],
-              description: "",
-              projects: [],
-              requests: [],
-              badges: 1,
-              socials: { github: "", discord: "", linkedin: "" },
-            };
-            inst.insertUser(newUser).then((res) => {
-              console.log(res);
+            APIManager.getInstance().then((inst) => {
+              let newUser: User = {
+                username: session.user?.name as string,
+                email: session.user?.email as string,
+                languages: [],
+                description: "",
+                projects: [],
+                requests: [],
+                badges: 1,
+                socials: { github: "", discord: "", linkedin: "" },
+              };
+              inst.insertUser(newUser).then((res) => {
+                console.log(res);
+              });
             });
-          });
+          }
         });
       });
     }
