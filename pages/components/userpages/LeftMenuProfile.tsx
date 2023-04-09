@@ -125,7 +125,7 @@ function LeftMenuProfile({ username, languages, projects }: any) {
               Languages
             </Typography>
             <Grid container direction={"row"} paddingBottom={"15%"}>
-              {languages.map((lang) => {
+              {languages.map((lang: any) => {
                 return (
                   <Grid>
                     <Typography
