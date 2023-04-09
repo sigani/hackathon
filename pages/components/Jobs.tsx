@@ -16,7 +16,7 @@ import APIManager from "../../utils/APIManager";
 import { Project } from "../../interfaces/Project";
 import ProjectCards from "./userpages/ProjectCards";
 
-export default function Jobs(props: any) {
+export default function Jobs({ cards = [] }: any) {
   return (
     <>
       <Grid
@@ -28,7 +28,7 @@ export default function Jobs(props: any) {
         columns={14}
         rowSpacing={5}
       >
-        {props.cards.map((project: Project) => {
+        {cards.map((project: Project) => {
           return (
             <Grid item sm={12} md={6} lg={4} padding={"0px"}>
               <ProjectCards project={project} />
