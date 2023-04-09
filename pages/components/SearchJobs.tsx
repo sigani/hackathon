@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const types = [
   "Any",
@@ -33,6 +33,10 @@ const types = [
 
 export default function SearchJobs() {
   const [type, setType] = useState("Any");
+
+  function handleCallbackResponse(response: any) {
+    console.log("Encoded JWT ID token:" + response.credentials);
+  }
 
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
