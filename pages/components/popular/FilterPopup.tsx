@@ -83,6 +83,7 @@ export default function FilterPopup() {
                     color="success"
                     id="outlined-basic"
                     variant="outlined"
+                    inputProps={{ maxLength: 40 }}
                   />
                 </Grid>
                 <Grid item>
