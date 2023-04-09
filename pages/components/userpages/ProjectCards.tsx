@@ -16,6 +16,7 @@ import {
   Grid,
   IconButton,
 } from "@mui/material";
+import { useMainContext } from "../../../store/MainContext";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -91,7 +92,11 @@ export default function ProjectCards() {
             Close
           </Button>
           {!pastproject && (
-            <Button variant="contained" color="success" onClick={handleClose}>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#FA9E64" }}
+              onClick={handleClose}
+            >
               Apply to Join
             </Button>
           )}

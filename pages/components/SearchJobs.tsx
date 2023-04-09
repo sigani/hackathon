@@ -1,16 +1,11 @@
 import {
-  Box,
   Button,
-  FormControl,
-  FormHelperText,
   Grid,
-  Input,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
   TextField,
-  Typography,
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -33,6 +28,10 @@ const types = [
 
 export default function SearchJobs() {
   const [type, setType] = useState("Any");
+
+  function handleCallbackResponse(response: any) {
+    console.log("Encoded JWT ID token:" + response.credentials);
+  }
 
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);

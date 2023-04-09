@@ -10,7 +10,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { CssBaseline, Link } from "@mui/material";
+import { CssBaseline, Grid, Link } from "@mui/material";
+import { useEffect } from "react";
+import { SessionProvider, useSession } from "next-auth/react";
 
 const pages = ["Popular Projects", "Contributors", "SEARCH"];
 const settings = ["Profile", "Account", "Settings", "Logout"];
@@ -19,15 +21,22 @@ const linksPages = [
   "/components/topContributors/TopContributors",
   "/",
 ];
-const linksSettings = ["/components/userpages/ProfilePage", "/", "/", "/"];
+const linksSettings = [
+  "/components/userpages/ProfilePage",
+  "/",
+  "/",
+  "/api/auth/signout",
+];
 
 function TopBar() {
+  const { data: session, status } = useSession() ?? {};
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  useEffect(() => {}, [session]);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -44,8 +53,22 @@ function TopBar() {
     setAnchorElUser(null);
   };
 
+  const name = (session: any) => {
+    if (session === undefined || session === null) return "Anonymous";
+    if (session.user === undefined || session.user === null) return "Anonymous";
+    if (session.user.name === null || session.user.name === undefined) {
+      if (session.user.email === null || session.user.email === undefined) {
+        return "Anonymous";
+      } else {
+        return session.user.email;
+      }
+    } else {
+      return session.user.name;
+    }
+  };
+
   return (
-    <>
+    <SessionProvider>
       <CssBaseline />
       <AppBar
         position="sticky"
@@ -143,12 +166,27 @@ function TopBar() {
                 </Link>
               ))}
             </Box>
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
+            <Box sx={{ flexGrow: 0 }} height={"55px"}>
+              <Grid
+                container
+                direction={"row"}
+                height={"55px"}
+                alignContent={"center"}
+              >
+                <Grid item sx={{ height: "55px", padding: "14px" }}>
+                  <Typography color={"white"}>
+                    {session ? <strong>{name(session)}</strong> : ""}
+                  </Typography>
+                </Grid>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt={name(session)}
+                      src="/static/images/avatar/2.jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
@@ -177,7 +215,7 @@ function TopBar() {
           </Toolbar>
         </Container>
       </AppBar>
-    </>
+    </SessionProvider>
   );
 }
 export default TopBar;
