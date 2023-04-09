@@ -15,5 +15,6 @@ export async function connectToDatabase(): Promise<Db> {
 
   cachedDb = db;
 
+  console.log("CONNECTED TO DB");
   return Promise.resolve(db);
 }
