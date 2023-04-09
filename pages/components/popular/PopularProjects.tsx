@@ -4,20 +4,19 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import {
-  Box,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
   Grid,
-  IconButton,
 } from "@mui/material";
 import TopBar from "../TopBar";
 import ProjectCards from "../userpages/ProjectCards";
 import FilterPopup from "./FilterPopup";
 import GlobalStore from "../../../store/GlobalStore";
 import LogInButton from "../LogInButton";
+import { SessionProvider } from "next-auth/react";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -45,20 +44,27 @@ let projects = [
 
 function ProjectSummary() {
   return (
-    <GlobalStore>
-      <TopBar></TopBar>
-      <LogInButton></LogInButton>
-      <FilterPopup></FilterPopup>
-      <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
-        {projects.map(() => {
-          return (
-            <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
-              <ProjectCards></ProjectCards>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </GlobalStore>
+    <SessionProvider>
+      <GlobalStore>
+        <TopBar></TopBar>
+        <LogInButton></LogInButton>
+        <FilterPopup></FilterPopup>
+        <Grid
+          container
+          direction={"row"}
+          paddingLeft={"5%"}
+          paddingRight={"5%"}
+        >
+          {projects.map(() => {
+            return (
+              <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
+                <ProjectCards></ProjectCards>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </GlobalStore>
+    </SessionProvider>
   );
 }
 

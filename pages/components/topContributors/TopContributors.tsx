@@ -16,6 +16,7 @@ import ContributorsFilter from "./ContributorsFilter";
 import UserCards from "./UserCards";
 import LogInButton from "../LogInButton";
 import GlobalStore from "../../../store/GlobalStore";
+import { SessionProvider } from "next-auth/react";
 
 let pastproject = false;
 let title = "Username";
@@ -43,29 +44,36 @@ let users = [
 
 function ProjectSummary() {
   return (
-    <GlobalStore>
-      <TopBar></TopBar>
-      <LogInButton />
-      <ContributorsFilter></ContributorsFilter>
-      <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
-        {users.map(() => {
-          return (
-            <Grid
-              container
-              xs={12}
-              sm={4}
-              md={3}
-              lg={2}
-              padding={"30px"}
-              alignItems={"stretch"}
-              justifyContent="space-between"
-            >
-              <UserCards></UserCards>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </GlobalStore>
+    <SessionProvider>
+      <GlobalStore>
+        <TopBar></TopBar>
+        <LogInButton />
+        <ContributorsFilter></ContributorsFilter>
+        <Grid
+          container
+          direction={"row"}
+          paddingLeft={"5%"}
+          paddingRight={"5%"}
+        >
+          {users.map(() => {
+            return (
+              <Grid
+                container
+                xs={12}
+                sm={4}
+                md={3}
+                lg={2}
+                padding={"30px"}
+                alignItems={"stretch"}
+                justifyContent="space-between"
+              >
+                <UserCards></UserCards>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </GlobalStore>
+    </SessionProvider>
   );
 }
 
