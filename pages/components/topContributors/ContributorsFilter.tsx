@@ -160,7 +160,7 @@ export default function ContributorsFilter() {
           <Button sx={{ color: "grey" }} onClick={handleClose}>
             Close
           </Button>
-          <Button variant="outlined" color="warning" onClick={handleClose}>
+          <Button variant="contained" color="warning" onClick={handleClose}>
             Filter
           </Button>
         </DialogActions>

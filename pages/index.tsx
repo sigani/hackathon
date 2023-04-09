@@ -1,6 +1,3 @@
-import Head from "next/head";
-import clientPromise from "../lib/mongodb";
-import { InferGetServerSidePropsType } from "next";
 import { Container, Grid, Stack } from "@mui/material";
 import SearchJobs from "./components/SearchJobs";
 import Jobs from "./components/Jobs";
@@ -9,6 +6,8 @@ import GlobalStore from "../store/GlobalStore";
 import APIManager from "../utils/APIManager";
 import { useEffect, useState } from "react";
 import { Project } from "../interfaces/Project";
+import LogInButton from "./components/LogInButton";
+import { SessionProvider } from "next-auth/react";
 
 export default function Home() {
   const [cards, setCards] = useState<Project[]>([]);
@@ -26,18 +25,21 @@ export default function Home() {
   }
 
   return (
-    <GlobalStore>
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing={5}
-        paddingBottom={"500px"}
-      >
-        <TopBar />
-        <SearchJobs updateCards={updateCards} />
-        <Jobs cards={cards} />
-      </Stack>
-    </GlobalStore>
+    <SessionProvider>
+      {/*<HeadComponent></HeadComponent>*/}
+      <GlobalStore>
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={5}
+          paddingBottom={"500px"}
+        >
+          <TopBar />
+          <SearchJobs updateCards={updateCards} />
+          <Jobs cards={cards} />
+        </Stack>
+      </GlobalStore>
+    </SessionProvider>
   );
 }

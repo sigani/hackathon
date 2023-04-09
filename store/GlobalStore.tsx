@@ -1,8 +1,8 @@
 import * as React from "react";
-import VolunteerStore from "./VolunteerContext";
+import MainStore from "./MainContext";
 
 const GlobalStore = ({ children }: any) => {
-  return <VolunteerStore>{children}</VolunteerStore>;
+  return <MainStore>{children}</MainStore>;
 };
 
 export default GlobalStore;

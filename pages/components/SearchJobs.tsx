@@ -1,10 +1,6 @@
 import {
-  Box,
   Button,
-  FormControl,
-  FormHelperText,
   Grid,
-  Input,
   InputLabel,
   MenuItem,
   Select,
@@ -49,6 +45,10 @@ export default function SearchJobs({ updateCards }: any) {
   };
   function handleOpen() {
     setOpen(true);
+  }
+
+  function handleCallbackResponse(response: any) {
+    console.log("Encoded JWT ID token:" + response.credentials);
   }
 
   const handleChange = (event: SelectChangeEvent) => {

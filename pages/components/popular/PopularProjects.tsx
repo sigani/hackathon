@@ -4,19 +4,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import {
-  Box,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
   Grid,
-  IconButton,
 } from "@mui/material";
 import TopBar from "../TopBar";
 import ProjectCards from "../userpages/ProjectCards";
 import FilterPopup from "./FilterPopup";
 import { Project } from "../../../interfaces/Project";
+import GlobalStore from "../../../store/GlobalStore";
+import LogInButton from "../LogInButton";
+import { SessionProvider } from "next-auth/react";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -59,19 +60,27 @@ let dummyProject: Project = {
 
 function ProjectSummary() {
   return (
-    <>
-      <TopBar></TopBar>
-      <FilterPopup></FilterPopup>
-      <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
-        {projects.map(() => {
-          return (
-            <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
-              <ProjectCards project={dummyProject} />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </>
+    <SessionProvider>
+      <GlobalStore>
+        <TopBar></TopBar>
+        <LogInButton></LogInButton>
+        <FilterPopup></FilterPopup>
+        <Grid
+          container
+          direction={"row"}
+          paddingLeft={"5%"}
+          paddingRight={"5%"}
+        >
+          {projects.map(() => {
+            return (
+              <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
+                <ProjectCards project={dummyProject} />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </GlobalStore>
+    </SessionProvider>
   );
 }
 
@@ -119,7 +128,7 @@ export default function ProjectCard() {
             Close
           </Button>
           {!pastproject && (
-            <Button variant="contained" color="success" onClick={handleClose}>
+            <Button variant="contained" color="warning" onClick={handleClose}>
               Apply to Join
             </Button>
           )}

@@ -19,6 +19,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Project } from "../../../interfaces/Project";
+import { useMainContext } from "../../../store/MainContext";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -192,7 +193,7 @@ export default function ProjectCards({ project = dummyProject }: any) {
           {!pastproject && (
             <Button
               variant="contained"
-              color="success"
+              sx={{ backgroundColor: "#FA9E64" }}
               onClick={handleOpenApply}
             >
               Apply to Join
