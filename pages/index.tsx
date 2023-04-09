@@ -4,15 +4,25 @@ import Jobs from "./components/Jobs";
 import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
 import APIManager from "../utils/APIManager";
+import { useEffect, useState } from "react";
+import { Project } from "../interfaces/Project";
 import LogInButton from "./components/LogInButton";
 import { SessionProvider } from "next-auth/react";
 
 export default function Home() {
-  APIManager.getInstance().then((instance) => {
-    instance.getProjects().then((res) => {
-      console.log(res);
+  const [cards, setCards] = useState<Project[]>([]);
+
+  useEffect(() => {
+    APIManager.getInstance().then((instance) => {
+      instance.getProjects().then((res) => {
+        setCards(res);
+      });
     });
-  });
+  }, []);
+
+  function updateCards(c: Project[]) {
+    setCards(c);
+  }
 
   return (
     <SessionProvider>
@@ -26,10 +36,9 @@ export default function Home() {
           paddingBottom={"500px"}
         >
           <TopBar />
-          <SearchJobs />
-          <Jobs />
+          <SearchJobs updateCards={updateCards} />
+          <Jobs cards={cards} />
         </Stack>
-        <LogInButton />
       </GlobalStore>
     </SessionProvider>
   );
