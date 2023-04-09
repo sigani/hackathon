@@ -16,31 +16,21 @@ import APIManager from "../../utils/APIManager";
 import { Project } from "../../interfaces/Project";
 import ProjectCards from "./userpages/ProjectCards";
 
-export default function Jobs() {
-  const [cards, setCards] = useState<Project[]>([]);
-
-  useEffect(() => {
-    APIManager.getInstance().then((instance) => {
-      instance.getProjects().then((res) => {
-        setCards(res);
-      });
-    });
-  }, []);
-
+export default function Jobs(props: any) {
   return (
     <>
       <Grid
         container
-        width={"60%"}
+        width={"100%"}
         height={"30vh"}
         alignItems={"top"}
         justifyContent={"center"}
         columns={14}
         rowSpacing={5}
       >
-        {cards.map((project) => {
+        {props.cards.map((project: Project) => {
           return (
-            <Grid item xs={4} padding={"20px"}>
+            <Grid item sm={12} md={6} lg={4} padding={"0px"}>
               <ProjectCards project={project} />
             </Grid>
           );

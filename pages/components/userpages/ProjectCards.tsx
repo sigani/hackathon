@@ -40,9 +40,18 @@ let dummyProject: Project = {
   website: "",
 };
 
+const cardSx = {
+  maxWidth: 345,
+  "&:hover": {
+    color: "gray",
+    backgroundColor: "darkGray",
+    cursor: "pointer",
+  },
+};
+
 function ProjectSummary({ handleOpen, project }: any) {
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={handleOpen}>
+    <Card sx={cardSx} onClick={handleOpen}>
       <CardMedia sx={{ height: 140 }} image={projectIm} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

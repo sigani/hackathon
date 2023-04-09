@@ -138,6 +138,9 @@ export default function AddAProject(props: any) {
     APIManager.getInstance().then((instance) => {
       instance.insertProject(project).then(() => {
         setOpen(true);
+        instance.getProjects().then((res) => {
+          props.updateCards(res);
+        });
       });
     });
   };
@@ -160,7 +163,7 @@ export default function AddAProject(props: any) {
           <DialogTitle id="alert-dialog-title">Submit a Project</DialogTitle>
           <DialogContent>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item lg={12} xs={12}>
                 <TextField
                   id="standard-helperText-required"
                   label="Title*"
@@ -177,7 +180,7 @@ export default function AddAProject(props: any) {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label" error={check}>
                   Type*
                 </InputLabel>
@@ -196,26 +199,26 @@ export default function AddAProject(props: any) {
                 </Select>
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label">
                   Upload an Image
                 </InputLabel>
                 <input type="file" />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label">
                   Start Date
                 </InputLabel>
                 <DatePicker onChange={(nv) => setStartDate(nv as Date)} />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label">End Date</InputLabel>
                 <DatePicker onChange={(nv) => setEndDate(nv as Date)} />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-multiple-chip-label">Languages</InputLabel>
                 <Select
                   fullWidth
@@ -243,7 +246,7 @@ export default function AddAProject(props: any) {
                 </Select>
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label">
                   Description
                 </InputLabel>
@@ -257,7 +260,7 @@ export default function AddAProject(props: any) {
                 />
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label">
                   Number of Members
                 </InputLabel>
@@ -276,7 +279,7 @@ export default function AddAProject(props: any) {
                 </Select>
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item lg={6} xs={12}>
                 <InputLabel id="demo-simple-select-label">Website</InputLabel>
                 <TextField
                   id="outlined-multiline-static"

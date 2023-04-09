@@ -39,7 +39,7 @@ const types = [
   "Other",
 ];
 
-export default function SearchJobs() {
+export default function SearchJobs({ updateCards }: any) {
   const [type, setType] = useState("Any");
   const [open, setOpen] = useState(false);
 
@@ -57,26 +57,29 @@ export default function SearchJobs() {
 
   return (
     <>
-      <AddAProject open={open} handleClose={handleClose} />
+      <AddAProject
+        open={open}
+        handleClose={handleClose}
+        updateCards={updateCards}
+      />
       <Grid
         container
         spacing={2}
         border={1}
         borderRadius={4}
-        width={"60%"}
-        height={"30vh"}
+        width={"75%"}
         bgcolor={"#E8E5E0"}
-        alignItems={"top"}
+        alignItems={"center"}
         justifyContent={"center"}
-        columns={18}
+        columns={12}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Grid item p={1}>
+          <Grid item p={1} xs={12} lg={3}>
             <InputLabel id="demo-simple-select-label">Keywords</InputLabel>
-            <TextField id="outlined-basic" variant="outlined" />
+            <TextField id="outlined-basic" variant="outlined" fullWidth />
           </Grid>
 
-          <Grid item p={1}>
+          <Grid item p={1} xs={12} lg={3} width={"auto"}>
             <InputLabel id="demo-simple-select-label">
               Type of Project
             </InputLabel>
@@ -86,7 +89,7 @@ export default function SearchJobs() {
               value={type}
               defaultValue="Any"
               onChange={handleChange}
-              sx={{ minWidth: "300px" }}
+              fullWidth
             >
               {types.map((t) => (
                 <MenuItem value={t}>{t}</MenuItem>
@@ -94,17 +97,21 @@ export default function SearchJobs() {
             </Select>
           </Grid>
 
-          <Grid item p={1}>
+          <Grid item p={1} xs={12} lg={3}>
             <InputLabel id="demo-simple-select-label">Start Date</InputLabel>
             <DatePicker />
           </Grid>
 
-          <Grid item p={1}>
+          <Grid item p={1} xs={12} lg={3}>
             <InputLabel id="demo-simple-select-label">End Date</InputLabel>
             <DatePicker />
           </Grid>
 
-          <Grid item p={1}>
+          <Grid item p={1} xs={12} lg={1}>
+            {/* spacing */}
+          </Grid>
+
+          <Grid item p={1} xs={12} lg={2}>
             <Button
               variant="contained"
               style={{ backgroundColor: "black", color: "#E8E5E0" }}
@@ -113,7 +120,7 @@ export default function SearchJobs() {
             </Button>
           </Grid>
 
-          <Grid item p={1}>
+          <Grid item p={1} xs={12} lg={3}>
             <Button
               variant="contained"
               style={{ backgroundColor: "black", color: "#E8E5E0" }}
