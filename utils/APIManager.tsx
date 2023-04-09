@@ -17,6 +17,13 @@ export default class APIManager {
     return data;
   }
 
+  public async getUsers() {
+    const url = `${this.apiBasePath}/user`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  }
+
   public async applyToProject(id: string) {
     const url = `${this.apiBasePath}/project`;
     const pid = { projectId: id };
@@ -34,6 +41,20 @@ export default class APIManager {
 
   public async insertProject(d: any) {
     const url = `${this.apiBasePath}/project`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(d),
+    };
+    const res = await fetch(url, options);
+    const data = await res.json();
+    return data;
+  }
+
+  public async insertUser(d: any) {
+    const url = `${this.apiBasePath}/user`;
     const options = {
       method: "POST",
       headers: {
