@@ -17,7 +17,11 @@ let badges = [
 let projectsCompleted = 8;
 // let languages = ["Python", "JavaScript", "Java", "C++"];
 
-function LeftMenuProfile({ username, languages, projects }: any) {
+function LeftMenuProfile({
+  username = "",
+  languages = [],
+  projects = [],
+}: any) {
   return (
     <>
       <Grid
