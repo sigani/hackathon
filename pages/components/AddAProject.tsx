@@ -77,7 +77,6 @@ export default function AddAProject(props: any) {
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
-    setCheck(false);
   };
 
   const ConfirmationPage = () => {
@@ -167,7 +166,10 @@ export default function AddAProject(props: any) {
                   helperText="What will your project be called"
                   variant="standard"
                   value={name}
-                  onChange={(event) => setName(event.target.value)}
+                  onChange={(event) => {
+                    setName(event.target.value);
+                    setCheck(false);
+                  }}
                   fullWidth
                   error={check}
                 />
