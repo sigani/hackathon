@@ -79,7 +79,6 @@ function ProjectSummary({ handleOpen, project }: any) {
 }
 
 export default function ProjectCards({ project = dummyProject }: any) {
-  console.log(project);
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
   const [openApply, setOpenApply] = useState(false);

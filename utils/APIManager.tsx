@@ -24,6 +24,16 @@ export default class APIManager {
     return data;
   }
 
+  public async findUser(email: string) {
+    const url = `${this.apiBasePath}/user/${email}`;
+    const options = {
+      method: "GET",
+    };
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  }
+
   public async applyToProject(id: string) {
     const url = `${this.apiBasePath}/project`;
     const pid = { projectId: id };
