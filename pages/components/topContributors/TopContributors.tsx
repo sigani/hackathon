@@ -93,6 +93,7 @@ function ProjectSummary() {
                 paddingTop={"30px"}
                 alignItems={"stretch"}
                 justifyContent="space-between"
+                paddingRight={"25px"}
               >
                 <UserCards
                   name={name}

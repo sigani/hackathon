@@ -38,12 +38,20 @@ let badges = [
 let projectsCompleted = 8;
 let languages = ["Python", "JavaScript", "Java", "C++"];
 
+const cardSx = {
+  maxWidth: "325px",
+  "&:hover": {
+    color: "gray",
+    backgroundColor: "darkGray",
+    cursor: "pointer",
+  },
+};
+
 function UserSummary(props: any) {
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={props.handleOpen}>
+    <Card sx={cardSx} onClick={props.handleOpen}>
       <Grid
         container
-        spacing={0}
         direction="row"
         alignItems="flex-start"
         justifyContent="flex-start"
@@ -70,7 +78,7 @@ function UserSummary(props: any) {
           </AspectRatio>
         </Grid>
       </Grid>
-      <CardContent>
+      <CardContent sx={{ cardSx }}>
         <Typography gutterBottom variant="h5" component="div">
           {props.name ? props.name : title}
         </Typography>
