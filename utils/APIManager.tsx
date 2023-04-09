@@ -1,7 +1,7 @@
 export default class APIManager {
   static instance: APIManager;
 
-  private apiBasePath: string = "/api";
+  private apiBasePath: string = "pages/api";
 
   public static async getInstance() {
     if (this.instance == undefined) {
