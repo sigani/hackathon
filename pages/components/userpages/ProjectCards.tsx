@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useCallback, useRef, useState } from "react";
+import { RefObject, useCallback, useRef, useState } from "react";
 import {
   Dialog,
   DialogActions,
