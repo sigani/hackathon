@@ -55,7 +55,7 @@ let dummyProject: Project = {
   completed: true,
   photos: [],
   likes: [],
-  website: "",
+  website: "hh",
 };
 
 function ProjectSummary() {
