@@ -125,6 +125,7 @@ export default function SearchJobs({ updateCards }: any) {
               Create a Project
             </Button>
           </Grid>
+
           <LogInButton />
         </LocalizationProvider>
       </Grid>
