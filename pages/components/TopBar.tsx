@@ -25,7 +25,7 @@ const linksPages = [
 const linksSettings = [
   "/components/userpages/ProfilePage",
   "/",
-  "/",
+  "/components/Requests",
   "/api/auth/signout",
 ];
 

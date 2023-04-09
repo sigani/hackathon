@@ -38,9 +38,9 @@ let badges = [
 let projectsCompleted = 8;
 let languages = ["Python", "JavaScript", "Java", "C++"];
 
-function UserSummary({ handleOpen }: any) {
+function UserSummary(props: any) {
   return (
-    <Card sx={{ maxWidth: 345 }} onClick={handleOpen}>
+    <Card sx={{ maxWidth: 345 }} onClick={props.handleOpen}>
       <Grid
         container
         spacing={0}
@@ -72,7 +72,7 @@ function UserSummary({ handleOpen }: any) {
       </Grid>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {props.name ? props.name : title}
         </Typography>
 
         <Grid item paddingRight={"20px"}>
@@ -114,7 +114,7 @@ function UserSummary({ handleOpen }: any) {
   );
 }
 
-export default function UserCards() {
+export default function UserCards(props?: any) {
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
 
@@ -129,7 +129,7 @@ export default function UserCards() {
   return (
     <>
       <Grid container justifyContent={"center"} height={"100%"}>
-        <UserSummary handleOpen={handleOpen} />
+        <UserSummary handleOpen={handleOpen} name={props ? props.name : ""} />
       </Grid>
       {/* Popup after clicking on a thingy */}
 
@@ -141,7 +141,9 @@ export default function UserCards() {
         fullWidth={true}
         maxWidth={"md"}
       >
-        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {props ? props.name : title}
+        </DialogTitle>
         <Card
           sx={{ maxWidth: 345, padding: "20px", boxShadow: "none" }}
           onClick={handleOpen}

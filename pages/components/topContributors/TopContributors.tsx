@@ -62,8 +62,8 @@ function ProjectSummary() {
                 xs={12}
                 sm={4}
                 md={3}
-                lg={2}
-                padding={"30px"}
+                paddingBottom={"30px"}
+                paddingTop={"30px"}
                 alignItems={"stretch"}
                 justifyContent="space-between"
               >

@@ -128,7 +128,12 @@ function LeftMenuProfile({
             >
               Languages
             </Typography>
-            <Grid container direction={"row"} paddingBottom={"15%"}>
+            <Grid
+              container
+              direction={"row"}
+              paddingBottom={"15%"}
+              justifyContent={"center"}
+            >
               {languages.map((lang: any) => {
                 return (
                   <Grid>
