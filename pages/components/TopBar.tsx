@@ -221,8 +221,8 @@ function TopBar() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
-                    <Link underline="none" href={linksSettings[0]}>
+                  <Link underline="none" href={linksSettings[0]}>
+                    <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
                       <Typography
                         textAlign="center"
                         variant="body1"
@@ -230,11 +230,12 @@ function TopBar() {
                       >
                         {settings[0]}
                       </Typography>
-                    </Link>
-                  </MenuItem>
+                    </MenuItem>{" "}
+                  </Link>
                   <EditUserPopUp setAnchor={setAnchorElUser} />
-                  <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
-                    <Link href={linksSettings[2]} underline="none">
+
+                  <Link href={linksSettings[2]} underline="none">
+                    <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
                       <Typography
                         textAlign="center"
                         variant="body1"
@@ -242,10 +243,11 @@ function TopBar() {
                       >
                         {settings[2]}
                       </Typography>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem key={settings[3]} onClick={handleCloseUserMenu}>
-                    <Link href={linksSettings[3]} underline="none">
+                    </MenuItem>
+                  </Link>
+
+                  <Link href={linksSettings[3]} underline="none">
+                    <MenuItem key={settings[3]} onClick={handleCloseUserMenu}>
                       <Typography
                         textAlign="center"
                         variant="body1"
@@ -253,8 +255,8 @@ function TopBar() {
                       >
                         {settings[3]}
                       </Typography>
-                    </Link>
-                  </MenuItem>
+                    </MenuItem>{" "}
+                  </Link>
                 </Menu>
               )}
             </Box>

@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import APIManager from "../../utils/APIManager";
 import LeftMenuProfile from "./userpages/LeftMenuProfile";
 import { SessionProvider, useSession } from "next-auth/react";
-import MiddleContent from "./userpages/MiddleContent";
 import GlobalStore from "../../store/GlobalStore";
 import TopBar from "./TopBar";
 import LogInButton from "./LogInButton";
 import { Box, Button, Grid } from "@mui/material";
-import { RequestAsyncStorageWrapper } from "next/dist/server/async-storage/request-async-storage-wrapper";
 import RequestsMiddle from "./RequestsMiddle";
 
-function Profile() {
+function Requester() {
   const { data: session, status } = useSession() ?? {};
   const [username, setUsername] = useState("");
   const [projects, setProjects] = useState([]);
@@ -29,6 +27,7 @@ function Profile() {
         });
       }
     });
+    console.log(username);
   }, [session]);
 
   // @ts-ignore
@@ -75,13 +74,13 @@ function Profile() {
   );
 }
 
-function ProfilePage() {
+function Requests() {
   return (
     <GlobalStore>
       <SessionProvider>
-        <Profile />
+        <Requester />
       </SessionProvider>
     </GlobalStore>
   );
 }
-export default ProfilePage;
+export default Requests;

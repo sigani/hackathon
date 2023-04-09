@@ -9,7 +9,6 @@ import * as React from "react";
 import { SessionProvider, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import APIManager from "../../../utils/APIManager";
-import { Languages } from "../../../interfaces/Languages";
 
 function Profile() {
   const { data: session, status } = useSession() ?? {};
@@ -30,6 +29,7 @@ function Profile() {
         });
       }
     });
+    console.log(username);
   }, [session]);
 
   // @ts-ignore
