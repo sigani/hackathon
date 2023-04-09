@@ -11,14 +11,29 @@ export default class APIManager {
   }
 
   public async getProjects() {
-    const url = `${this.apiBasePath}/projects`;
+    const url = `${this.apiBasePath}/project`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  }
+
+  public async applyToProject(id: string) {
+    const url = `${this.apiBasePath}/project`;
+    const pid = { projectId: id };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(pid),
+    };
     const res = await fetch(url);
     const data = await res.json();
     return data;
   }
 
   public async insertProject(d: any) {
-    const url = `${this.apiBasePath}/projects`;
+    const url = `${this.apiBasePath}/project`;
     const options = {
       method: "POST",
       headers: {

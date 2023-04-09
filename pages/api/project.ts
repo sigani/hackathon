@@ -7,7 +7,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { method, body } = req;
-  console.log("HALLO");
   const db = await connectToDatabase();
   const collection = await db.collection("projects");
 
@@ -20,7 +19,7 @@ export default async function handler(
       return res.status(200).json(body);
 
     default:
-      res.setHeader("Allow", ["GET"]);
+      res.setHeader("Allow", ["GET", "POST"]);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
