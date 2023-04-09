@@ -12,9 +12,11 @@ export default function LogInButton() {
     if (status === "authenticated") {
       APIManager.getInstance().then((instance) => {
         instance.getUsers().then((res) => {
-          for (let i of res) {
-            if (i.email === session.user?.email) {
-              return;
+          if (session.user) {
+            for (let i of res) {
+              if (i.email === session.user.email) {
+                return;
+              }
             }
           }
 
