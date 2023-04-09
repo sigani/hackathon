@@ -18,6 +18,7 @@ import { Project } from "../../../interfaces/Project";
 import GlobalStore from "../../../store/GlobalStore";
 import LogInButton from "../LogInButton";
 import { SessionProvider } from "next-auth/react";
+import { images } from "next/dist/build/webpack/config/blocks/images";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -43,13 +44,15 @@ let projects = [
   "Best project ever",
 ];
 
+let projectIms = ["p0", "p1", "p2", "p3", "p4", "p5", "p6"];
+
 let dummyProject: Project = {
   name: title,
   type: "Video Game",
   languages: ["JavaScript"],
   description: description,
-  owner: "69",
-  members: ["69"],
+  owner: "42",
+  members: ["yeee"],
   teamSize: 2,
   openForApplications: true,
   completed: true,
@@ -71,10 +74,14 @@ function ProjectSummary() {
           paddingLeft={"5%"}
           paddingRight={"5%"}
         >
-          {projects.map(() => {
+          {projects.map((value, index) => {
             return (
               <Grid xs={12} sm={6} md={4} lg={3} padding={"30px"}>
-                <ProjectCards project={dummyProject} />
+                <ProjectCards
+                  project={dummyProject}
+                  im={projectIms[index % 7]}
+                  // pic={projectIm[index % 7]}
+                />
               </Grid>
             );
           })}

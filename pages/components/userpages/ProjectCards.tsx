@@ -53,10 +53,10 @@ const cardSx = {
   },
 };
 
-function ProjectSummary({ handleOpen, project }: any) {
+function ProjectSummary({ handleOpen, project, im }: any) {
   return (
     <Card sx={cardSx} onClick={handleOpen}>
-      <CardMedia sx={{ height: 140 }} image={projectIm} />
+      <CardMedia sx={{ height: 140 }} image={"/projects/" + im + ".png"} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {project.name}
@@ -78,7 +78,7 @@ function ProjectSummary({ handleOpen, project }: any) {
   );
 }
 
-export default function ProjectCards({ project = dummyProject }: any) {
+export default function ProjectCards({ project = dummyProject, im }: any) {
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
   const [openApply, setOpenApply] = useState(false);
@@ -142,7 +142,7 @@ export default function ProjectCards({ project = dummyProject }: any) {
   return (
     <>
       <Grid container justifyContent={"center"} height={"100%"}>
-        <ProjectSummary handleOpen={handleOpen} project={project} />
+        <ProjectSummary handleOpen={handleOpen} project={project} im={im} />
       </Grid>
       {/* Popup after clicking on a thingy */}
       <ApplyToProject />

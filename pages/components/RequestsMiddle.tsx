@@ -6,27 +6,35 @@ import ProjectCards from "./userpages/ProjectCards";
 import UserCards from "./topContributors/UserCards";
 
 let potentialUsers = [
-  "CodeWizard",
   "ByteBoss",
-  "TechGuru",
-  "CyberNinja",
   "ScriptMaster",
   "PixelPirate",
-  "SyntaxSavior",
-  "DevGenius",
-  "DataDiva",
   "HackHustler",
   "CodeCrusader",
   "ProgramPro",
-  "LogicLord",
-  "ByteBabe",
-  "BugBasher",
-  "AlgorithmAce",
   "CoderChick",
   "TechTitan",
   "CodeCommander",
   "ScriptSlinger",
 ];
+let colours = [
+  "#FF0000 ",
+  "#00FF00",
+  "#0000FF ",
+  "#FFFF00 ",
+  "#FF00FF ",
+  "#00FFFF ",
+  "#800000",
+  "#008000 ",
+  "#000080 ",
+  "#808000 ",
+  "#800080 ",
+  "#008080 ",
+  "#FFA500 ",
+  "#FFC0CB ",
+  "#FFD700 ",
+];
+const numbers = [10, 3, 7, 9, 12, 15, 17, 8, 22, 5, 30, 15, 1, 15, 5, 6];
 
 function RequestsMiddle() {
   return (
@@ -56,10 +64,14 @@ function RequestsMiddle() {
             <h1>Pending Requests</h1>
             <h2>Potential Collaborators</h2>
             <Grid container direction={"row"}>
-              {potentialUsers.map((name) => {
+              {potentialUsers.map((name, index) => {
                 return (
                   <Grid padding="20px">
-                    <UserCards name={name}></UserCards>
+                    <UserCards
+                      name={name}
+                      colour={colours[index]}
+                      projects={numbers[index]}
+                    ></UserCards>
                   </Grid>
                 );
               })}

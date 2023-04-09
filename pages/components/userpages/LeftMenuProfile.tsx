@@ -58,7 +58,11 @@ function LeftMenuProfile({
             }}
           >
             <Avatar
-              src={"../superhero-icon-original.svg"}
+              src={
+                username === "Julia Sotiri"
+                  ? "../selfie.png"
+                  : "../superhero-icon-original.svg"
+              }
               sx={{
                 height: "100%",
                 width: "100%",

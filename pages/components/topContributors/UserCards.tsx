@@ -64,7 +64,7 @@ function UserSummary(props: any) {
               sx={{
                 height: "100%",
                 width: "100%",
-                backgroundColor: "orange",
+                backgroundColor: props.colour,
               }}
             />
           </AspectRatio>
@@ -82,7 +82,7 @@ function UserSummary(props: any) {
             variant="body2"
             component="div"
           >
-            Completed Projects: {projectsCompleted}
+            Completed Projects: {props.projects}
           </Typography>
 
           <Typography
@@ -129,7 +129,12 @@ export default function UserCards(props?: any) {
   return (
     <>
       <Grid container justifyContent={"center"} height={"100%"}>
-        <UserSummary handleOpen={handleOpen} name={props ? props.name : ""} />
+        <UserSummary
+          handleOpen={handleOpen}
+          name={props ? props.name : ""}
+          projects={props.projects}
+          colour={props.colour}
+        />
       </Grid>
       {/* Popup after clicking on a thingy */}
 
