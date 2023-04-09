@@ -30,7 +30,7 @@ function Profile() {
         });
       }
     });
-  }, []);
+  }, [session]);
 
   return (
     <>
