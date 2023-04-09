@@ -78,6 +78,7 @@ export default function ContributorsFilter() {
                     Search by username
                   </InputLabel>
                   <TextField
+                    inputProps={{ maxLength: 40 }}
                     color="success"
                     id="outlined-basic"
                     variant="outlined"

@@ -6,14 +6,6 @@ import {
   Select,
   SelectChangeEvent,
   TextField,
-  Typography,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Card,
-  CardMedia,
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -72,7 +64,12 @@ export default function SearchJobs({ updateCards }: any) {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Grid item p={1} xs={12} lg={3}>
             <InputLabel id="demo-simple-select-label">Keywords</InputLabel>
-            <TextField id="outlined-basic" variant="outlined" fullWidth />
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
+              fullWidth
+              inputProps={{ maxLength: 40 }}
+            />
           </Grid>
 
           <Grid item p={1} xs={12} lg={3} width={"auto"}>

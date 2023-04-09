@@ -13,9 +13,10 @@ import MenuItem from "@mui/material/MenuItem";
 import { CssBaseline, Grid, Link } from "@mui/material";
 import { useEffect } from "react";
 import { SessionProvider, useSession } from "next-auth/react";
+import EditUserPopUp from "./EditUserPopUp";
 
 const pages = ["Popular Projects", "Contributors", "SEARCH"];
-const settings = ["Profile", "Account", "Settings", "Logout"];
+const settings = ["Profile", "Edit Account", "Requests", "Logout"];
 const linksPages = [
   "/components/popular/PopularProjects",
   "/components/topContributors/TopContributors",
@@ -155,7 +156,11 @@ function TopBar() {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, index) => (
-                <Link href={linksPages[index]}>
+                <Link
+                  href={linksPages[index]}
+                  color="inherit"
+                  underline="hover"
+                >
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
@@ -175,16 +180,21 @@ function TopBar() {
               >
                 <Grid item sx={{ height: "55px", padding: "14px" }}>
                   <Typography color={"white"}>
-                    {session ? <strong>{name(session)}</strong> : ""}
+                    {session ? <strong>{name(session)}</strong> : "Anonymous"}
                   </Typography>
                 </Grid>
-                <Tooltip title="Login to continue">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt={name(session)}
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
+
+                <Tooltip
+                  title={session ? "Profile Options" : "Login to continue"}
+                >
+                  <Grid>
+                    <IconButton onClick={handleOpenUserMenu}>
+                      <Avatar
+                        alt={name(session)}
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Grid>
                 </Tooltip>
               </Grid>
               {session && (
@@ -204,13 +214,40 @@ function TopBar() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting, index) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Link href={linksSettings[index]}>
-                        <Typography textAlign="center">{setting}</Typography>
-                      </Link>
-                    </MenuItem>
-                  ))}
+                  <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
+                    <Link underline="none" href={linksSettings[0]}>
+                      <Typography
+                        textAlign="center"
+                        variant="body1"
+                        sx={{ color: "#4D4D4D", borderColor: "#4D4D4D" }}
+                      >
+                        {settings[0]}
+                      </Typography>
+                    </Link>
+                  </MenuItem>
+                  <EditUserPopUp setAnchor={setAnchorElUser} />
+                  <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
+                    <Link href={linksSettings[2]} underline="none">
+                      <Typography
+                        textAlign="center"
+                        variant="body1"
+                        sx={{ color: "#4D4D4D", borderColor: "#4D4D4D" }}
+                      >
+                        {settings[2]}
+                      </Typography>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem key={settings[3]} onClick={handleCloseUserMenu}>
+                    <Link href={linksSettings[3]} underline="none">
+                      <Typography
+                        textAlign="center"
+                        variant="body1"
+                        sx={{ color: "#4D4D4D", borderColor: "#4D4D4D" }}
+                      >
+                        {settings[3]}
+                      </Typography>
+                    </Link>
+                  </MenuItem>
                 </Menu>
               )}
             </Box>
