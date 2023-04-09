@@ -2,6 +2,7 @@
 
 [Youtube link](https://www.youtube.com/watch?v=GE6GAWR8xJE&t=1s&ab_channel=SiganiA)
 
+## Please note you need to be approved to log in while in production
 
 ## Example app using MongoDB
 
