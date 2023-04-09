@@ -91,7 +91,11 @@ export default function ProjectCards() {
             Close
           </Button>
           {!pastproject && (
-            <Button variant="contained" color="warning" onClick={handleClose}>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#FA9E64" }}
+              onClick={handleClose}
+            >
               Apply to Join
             </Button>
           )}

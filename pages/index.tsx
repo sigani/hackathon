@@ -7,6 +7,8 @@ import Jobs from "./components/Jobs";
 import TopBar from "./components/TopBar";
 import GlobalStore from "../store/GlobalStore";
 import APIManager from "../utils/APIManager";
+import LogInButton from "./components/LogInButton";
+import { useMainContext } from "../store/MainContext";
 
 // export async function getServerSideProps(context: any) {
 //   try {
@@ -51,6 +53,7 @@ export default function Home() {
         <SearchJobs />
         <Jobs />
       </Stack>
+      <LogInButton />
     </GlobalStore>
   );
 }

@@ -158,7 +158,11 @@ export default function UserCards() {
             Close
           </Button>
           {!pastproject && (
-            <Button variant="outlined" color="warning" onClick={handleClose}>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#FA9E64" }}
+              onClick={handleClose}
+            >
               Go to profile
             </Button>
           )}
