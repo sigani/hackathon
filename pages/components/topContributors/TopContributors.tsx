@@ -14,6 +14,8 @@ import {
 import TopBar from "../TopBar";
 import ContributorsFilter from "./ContributorsFilter";
 import UserCards from "./UserCards";
+import LogInButton from "../LogInButton";
+import GlobalStore from "../../../store/GlobalStore";
 
 let pastproject = false;
 let title = "Username";
@@ -41,8 +43,9 @@ let users = [
 
 function ProjectSummary() {
   return (
-    <>
+    <GlobalStore>
       <TopBar></TopBar>
+      <LogInButton />
       <ContributorsFilter></ContributorsFilter>
       <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
         {users.map(() => {
@@ -62,7 +65,7 @@ function ProjectSummary() {
           );
         })}
       </Grid>
-    </>
+    </GlobalStore>
   );
 }
 

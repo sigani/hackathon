@@ -3,10 +3,14 @@ import Box from "@mui/material/Box";
 import TopBar from "../TopBar";
 import LeftMenuProfile from "./LeftMenuProfile";
 import MiddleContent from "./MiddleContent";
+import GlobalStore from "../../../store/GlobalStore";
+import LogInButton from "../LogInButton";
+import * as React from "react";
 
 function ProfilePage() {
   return (
-    <>
+    <GlobalStore>
+      <LogInButton></LogInButton>
       <TopBar></TopBar>
       <Box
         sx={{
@@ -39,7 +43,7 @@ function ProfilePage() {
           </Grid>
         </Grid>
       </Box>
-    </>
+    </GlobalStore>
   );
 }
 export default ProfilePage;

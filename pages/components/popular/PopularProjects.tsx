@@ -16,6 +16,8 @@ import {
 import TopBar from "../TopBar";
 import ProjectCards from "../userpages/ProjectCards";
 import FilterPopup from "./FilterPopup";
+import GlobalStore from "../../../store/GlobalStore";
+import LogInButton from "../LogInButton";
 
 let pastproject = false;
 let title = "BlackJack";
@@ -43,8 +45,9 @@ let projects = [
 
 function ProjectSummary() {
   return (
-    <>
+    <GlobalStore>
       <TopBar></TopBar>
+      <LogInButton></LogInButton>
       <FilterPopup></FilterPopup>
       <Grid container direction={"row"} paddingLeft={"5%"} paddingRight={"5%"}>
         {projects.map(() => {
@@ -55,7 +58,7 @@ function ProjectSummary() {
           );
         })}
       </Grid>
-    </>
+    </GlobalStore>
   );
 }
 

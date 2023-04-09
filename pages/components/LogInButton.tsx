@@ -10,6 +10,7 @@ export default function LogInButton() {
     <Button
       variant="contained"
       sx={{
+        zIndex: "1000",
         width: "240px",
         position: "fixed",
         bottom: "40px",
