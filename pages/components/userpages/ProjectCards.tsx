@@ -41,7 +41,7 @@ let dummyProject: Project = {
 };
 
 const cardSx = {
-  maxWidth: 345,
+  width: "325px",
   "&:hover": {
     color: "gray",
     backgroundColor: "darkGray",
