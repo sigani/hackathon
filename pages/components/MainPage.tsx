@@ -1,6 +1,11 @@
+import { SessionProvider } from "next-auth/react";
 import ProfilePage from "./userpages/ProfilePage";
 
 function MainPage() {
-  return <ProfilePage />;
+  return (
+    <SessionProvider>
+      <ProfilePage />
+    </SessionProvider>
+  );
 }
 export default MainPage;

@@ -2,11 +2,43 @@ import { Button, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
+import APIManager from "../../utils/APIManager";
+import { User } from "../../interfaces/User";
 
 export default function LogInButton() {
   const { data: session, status } = useSession() ?? {};
 
-  useEffect(() => {}, [session]);
+  useEffect(() => {
+    if (status === "authenticated") {
+      APIManager.getInstance().then((instance) => {
+        instance.getUsers().then((res) => {
+          if (session && session.user && session.user.email) {
+            for (let i of res) {
+              if (i.email === session.user.email) {
+                return;
+              }
+            }
+
+            APIManager.getInstance().then((inst) => {
+              let newUser: User = {
+                username: session.user?.name as string,
+                email: session.user?.email as string,
+                languages: [],
+                description: "",
+                projects: [],
+                requests: [],
+                badges: 1,
+                socials: { github: "", discord: "", linkedin: "" },
+              };
+              inst.insertUser(newUser).then((res) => {
+                console.log(res);
+              });
+            });
+          }
+        });
+      });
+    }
+  }, [session]);
 
   return (
     <>

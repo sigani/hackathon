@@ -15,8 +15,13 @@ let badges = [
   SportsEsportsIcon,
 ];
 let projectsCompleted = 8;
-let languages = ["Python", "JavaScript", "Java", "C++"];
-function LeftMenuProfile() {
+// let languages = ["Python", "JavaScript", "Java", "C++"];
+
+function LeftMenuProfile({
+  username = "",
+  languages = [],
+  projects = [],
+}: any) {
   return (
     <>
       <Grid
@@ -83,7 +88,7 @@ function LeftMenuProfile() {
               Hacker
             </Typography>
             <Typography color={"white"} variant={"body2"} paddingBottom={"15%"}>
-              {name}
+              {username}
             </Typography>
             <Typography
               color={"rgba(255,255,255,0.6)"}
@@ -114,7 +119,7 @@ function LeftMenuProfile() {
               Projects Completed
             </Typography>
             <Typography color={"white"} variant={"body2"} paddingBottom={"15%"}>
-              {projectsCompleted}
+              {projects.length}
             </Typography>
             <Typography
               color={"rgba(255,255,255,0.6)"}
@@ -124,7 +129,7 @@ function LeftMenuProfile() {
               Languages
             </Typography>
             <Grid container direction={"row"} paddingBottom={"15%"}>
-              {languages.map((lang) => {
+              {languages.map((lang: any) => {
                 return (
                   <Grid>
                     <Typography
