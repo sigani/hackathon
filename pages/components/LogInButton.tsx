@@ -1,11 +1,11 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { useMainContext } from "../../store/MainContext";
 
 export default function LogInButton() {
   const { isLoggedIn } = useMainContext();
   return isLoggedIn ? (
-    <></>
+    <Grid height={0} position={"absolute"}></Grid>
   ) : (
     <Button
       variant="contained"
