@@ -1,11 +1,9 @@
 import { Button, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
-import { useMainContext } from "../../store/MainContext";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 export default function LogInButton() {
-  const { isLoggedIn, setIsLoggedIn } = useMainContext();
   const { data: session, status } = useSession();
 
   useEffect(() => {}, [session]);
