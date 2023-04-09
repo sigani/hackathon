@@ -1,4 +1,4 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { useMainContext } from "../../store/MainContext";
 import { signIn, signOut, useSession } from "next-auth/react";

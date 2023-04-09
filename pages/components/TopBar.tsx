@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CssBaseline, Grid, Link } from "@mui/material";
 import { useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 
 const pages = ["Popular Projects", "Contributors", "SEARCH"];
 const settings = ["Profile", "Account", "Settings", "Logout"];
@@ -29,7 +29,7 @@ const linksSettings = [
 ];
 
 function TopBar() {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession() ?? {};
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -56,23 +56,19 @@ function TopBar() {
   const name = (session: any) => {
     if (session === undefined || session === null) return "Anonymous";
     if (session.user === undefined || session.user === null) return "Anonymous";
-    // @ts-ignore
     if (session.user.name === null || session.user.name === undefined) {
-      // @ts-ignore
       if (session.user.email === null || session.user.email === undefined) {
         return "Anonymous";
       } else {
-        // @ts-ignore
         return session.user.email;
       }
     } else {
-      // @ts-ignore
       return session.user.name;
     }
   };
 
   return (
-    <>
+    <SessionProvider>
       <CssBaseline />
       <AppBar
         position="sticky"
@@ -219,7 +215,7 @@ function TopBar() {
           </Toolbar>
         </Container>
       </AppBar>
-    </>
+    </SessionProvider>
   );
 }
 export default TopBar;
