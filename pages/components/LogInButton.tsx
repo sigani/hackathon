@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 export default function LogInButton() {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession() ?? {};
 
   useEffect(() => {}, [session]);
 
