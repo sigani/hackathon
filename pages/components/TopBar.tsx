@@ -203,13 +203,14 @@ function TopBar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting, index) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link href={linksSettings[index]}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </Link>
-                  </MenuItem>
-                ))}
+                {session &&
+                  settings.map((setting, index) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Link href={linksSettings[index]}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </Link>
+                    </MenuItem>
+                  ))}
               </Menu>
             </Box>
           </Toolbar>
