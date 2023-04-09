@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import {
   Dialog,
   DialogActions,
@@ -15,6 +15,8 @@ import {
   DialogTitle,
   Grid,
   IconButton,
+  InputLabel,
+  TextField,
 } from "@mui/material";
 import { Project } from "../../../interfaces/Project";
 
@@ -24,8 +26,9 @@ let description =
   "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
 let projectIm = "/projects/p1.png";
 
+type TextFieldRef = RefObject<HTMLTextAreaElement>;
+
 let dummyProject: Project = {
-  id: "69",
   name: title,
   type: "Video Game",
   languages: ["JavaScript"],
@@ -78,13 +81,62 @@ export default function ProjectCards({ project = dummyProject }: any) {
   console.log(project);
   // would first make api call to get all available projects
   const [open, setOpen] = useState(false);
+  const [openApply, setOpenApply] = useState(false);
+  const [msg, setMsg] = useState("");
+  const textFieldRef: TextFieldRef = useRef(null);
 
   const handleClose = () => {
-    console.log("hallo");
     setOpen(false);
+    setOpenApply(false);
+    console.log(textFieldRef.current?.value);
   };
+
   function handleOpen() {
     setOpen(true);
+  }
+  const handleOpenApply = useCallback(() => {
+    setOpenApply(true);
+  }, [openApply]);
+
+  function ApplyToProject() {
+    return (
+      <Dialog
+        open={openApply}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        fullWidth={true}
+        maxWidth={"md"}
+      >
+        <DialogContent>
+          <InputLabel id="demo-simple-select-label">
+            Send a message to the creator
+          </InputLabel>
+          <br />
+          <TextField
+            id="outlined-multiline-static"
+            multiline
+            rows={4}
+            placeholder="Tell the owner why you would like to join them!"
+            inputRef={textFieldRef}
+            // value={msg}
+            // onChange={(event) => {
+            //   console.log(event);
+            //   setMsg(event.target.value);
+            // }}
+            fullWidth
+          />
+          <DialogActions>
+            <Button sx={{ color: "grey" }} onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="contained" color="success" onClick={handleClose}>
+              Apply
+            </Button>
+          </DialogActions>
+        </DialogContent>
+      </Dialog>
+    );
   }
 
   return (
@@ -93,7 +145,7 @@ export default function ProjectCards({ project = dummyProject }: any) {
         <ProjectSummary handleOpen={handleOpen} project={project} />
       </Grid>
       {/* Popup after clicking on a thingy */}
-
+      <ApplyToProject />
       <Dialog
         open={open}
         onClose={handleClose}
@@ -111,6 +163,25 @@ export default function ProjectCards({ project = dummyProject }: any) {
         </Card>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
+            Type: {project.type}
+          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            Start Date: {project.startDate}
+          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            End Date: {project.startDate}
+          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            Languages: {project.languages.toString().replaceAll(",", ", ")}
+          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            Desired Group Size: {project.teamSize}
+          </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            Website: {project.website}
+          </DialogContentText>
+          <br />
+          <DialogContentText id="alert-dialog-description">
             {project.description}
           </DialogContentText>
         </DialogContent>
@@ -119,7 +190,11 @@ export default function ProjectCards({ project = dummyProject }: any) {
             Close
           </Button>
           {!pastproject && (
-            <Button variant="contained" color="success" onClick={handleClose}>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={handleOpenApply}
+            >
               Apply to Join
             </Button>
           )}

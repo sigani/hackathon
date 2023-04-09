@@ -43,7 +43,6 @@ let projects = [
 ];
 
 let dummyProject: Project = {
-  id: "69",
   name: title,
   type: "Video Game",
   languages: ["JavaScript"],

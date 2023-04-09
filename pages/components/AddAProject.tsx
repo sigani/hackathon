@@ -116,15 +116,14 @@ export default function AddAProject(props: any) {
     }
 
     let project: Project = {
-      id: "69",
       name: name,
       type: type,
       startDate: startDate,
       endDate: endDate,
       languages: language,
       description: desc,
-      owner: "69",
-      members: ["69"],
+      owner: "69", //replace with email
+      members: ["69"], //replace with email
       teamSize: members,
       openForApplications: true,
       completed: false,

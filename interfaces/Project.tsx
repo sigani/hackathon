@@ -1,5 +1,4 @@
 export type Project = {
-  id: string | null;
   name: string;
   type: string;
   startDate?: Date;
