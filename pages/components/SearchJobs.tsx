@@ -19,6 +19,7 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 import AddAProject from "./AddAProject";
+import LogInButton from "./LogInButton";
 
 const types = [
   "Any",
@@ -46,11 +47,6 @@ export default function SearchJobs({ updateCards }: any) {
   function handleOpen() {
     setOpen(true);
   }
-
-  function handleCallbackResponse(response: any) {
-    console.log("Encoded JWT ID token:" + response.credentials);
-  }
-
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
   };
@@ -129,6 +125,8 @@ export default function SearchJobs({ updateCards }: any) {
               Create a Project
             </Button>
           </Grid>
+
+          <LogInButton />
         </LocalizationProvider>
       </Grid>
     </>

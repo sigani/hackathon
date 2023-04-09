@@ -178,7 +178,7 @@ function TopBar() {
                     {session ? <strong>{name(session)}</strong> : ""}
                   </Typography>
                 </Grid>
-                <Tooltip title="Open settings">
+                <Tooltip title="Login to continue">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
                       alt={name(session)}
@@ -187,30 +187,32 @@ function TopBar() {
                   </IconButton>
                 </Tooltip>
               </Grid>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting, index) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link href={linksSettings[index]}>
-                      <Typography textAlign="center">{setting}</Typography>
-                    </Link>
-                  </MenuItem>
-                ))}
-              </Menu>
+              {session && (
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting, index) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Link href={linksSettings[index]}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </Link>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              )}
             </Box>
           </Toolbar>
         </Container>
