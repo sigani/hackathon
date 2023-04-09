@@ -16,6 +16,7 @@ import {
   Grid,
   IconButton,
 } from "@mui/material";
+import { useMainContext } from "../../../store/MainContext";
 
 let pastproject = false;
 let title = "BlackJack";

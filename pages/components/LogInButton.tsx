@@ -2,11 +2,13 @@ import { Button, Grid, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { useMainContext } from "../../store/MainContext";
 import { signIn, signOut, useSession } from "next-auth/react";
-import GlobalStore from "../../store/GlobalStore";
+import { useEffect } from "react";
 
 export default function LogInButton() {
-  const { isLoggedIn } = useMainContext();
+  const { isLoggedIn, setIsLoggedIn } = useMainContext();
   const { data: session, status } = useSession();
+
+  useEffect(() => {}, [session]);
 
   return (
     <>
@@ -53,30 +55,30 @@ export default function LogInButton() {
                 style={{ backgroundImage: `url('${session.user.image}')` }}
               />
             )}
-            <Grid
-              sx={{
-                position: "fixed",
-                bottom: "10px",
-                zIndex: "1000",
-                left: "50px",
-              }}
-            >
-              <span>
-                <small>Signed in as</small>
-                <br />
-                <strong>{session.user.email ?? session.user.name}</strong>
-              </span>{" "}
-              <br />
-              <a
-                href={`/api/auth/signout`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  signOut();
-                }}
-              >
-                Sign out
-              </a>
-            </Grid>
+            {/*<Grid*/}
+            {/*  sx={{*/}
+            {/*    position: "fixed",*/}
+            {/*    bottom: "10px",*/}
+            {/*    zIndex: "1000",*/}
+            {/*    left: "50px",*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  <span>*/}
+            {/*    <small>Signed in as</small>*/}
+            {/*    <br />*/}
+            {/*    <strong>{session.user.email ?? session.user.name}</strong>*/}
+            {/*  </span>{" "}*/}
+            {/*  <br />*/}
+            {/*  <a*/}
+            {/*    href={`/api/auth/signout`}*/}
+            {/*    onClick={(e) => {*/}
+            {/*      e.preventDefault();*/}
+            {/*      signOut();*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    Sign out*/}
+            {/*  </a>*/}
+            {/*</Grid>*/}
           </>
         )}
       </div>
