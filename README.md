@@ -1,8 +1,19 @@
+## Demo
+
+[Youtube link](https://www.youtube.com/watch?v=GE6GAWR8xJE&t=1s&ab_channel=SiganiA)
+
+## Preview
+![Screenshot 2023-04-09 at 6 05 01 PM](https://user-images.githubusercontent.com/76749862/230806024-75a47f46-962b-413e-86b7-598e744982bc.png)
+![Screenshot 2023-04-09 at 6 05 36 PM](https://user-images.githubusercontent.com/76749862/230806027-a9cc09e0-6dba-45c5-a8c0-f347c6e2af3b.png)
+
+## Please note you need to be approved to log in while in production
+
 ## Example app using MongoDB
 
 [MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
 
 If you want to learn more about MongoDB, visit the following pages:
+
 
 - [MongoDB Atlas](https://mongodb.com/atlas)
 - [MongoDB Documentation](https://docs.mongodb.com/)
